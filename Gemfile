@@ -15,6 +15,7 @@ gem 'tinymce-rails'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'html_truncator'
 gem 'kaminari'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
