@@ -1,0 +1,16 @@
+<%= link_to "Create New", new_banner_path %>
+<% @banners.each do |b| %>
+	<ul class="admin-index">		
+		<li><%= image_tag b.image.url :side %>
+		<li><%= b.name %></li>
+		<li>
+			<% if b.active %>
+				<span class="label label-success">Active</span>
+			<% else %>
+				<%= link_to "activate", activate_banner_path( b ) %>
+			<% end %>
+		</li>
+		<li><%= link_to "Edit", edit_banner_path( b ) %></li>
+		<li><%= link_to "Delete", banner_path( b ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+<% end %>

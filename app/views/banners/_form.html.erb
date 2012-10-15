@@ -1,0 +1,7 @@
+<%= simple_form_for banner, :html => {:multipart => true} do |f| %>
+  <%= f.input :name %>
+	<%= f.input :url %>
+	<%= f.file_field :image %>
+	<br />
+  <%= f.button :submit %>
+<% end %>

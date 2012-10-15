@@ -1,0 +1,8 @@
+<% @events.each do |e| %>
+<div class="event-container">
+	<h3><%= e.name %></h3>
+	<p><%= e.description %></p>
+	<p><%= e.time %></p>
+	<%= render "shared/map", address: e.location %>
+</div>
+<% end %>

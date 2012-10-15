@@ -1,0 +1,9 @@
+<%= link_to "Create New", new_member_path %>
+<% @members.each do |m| %>
+	<ul class="admin-index">		
+		<li><%= image_tag m.image.url :thumb %>
+		<li><%= m.name %></li>
+		<li><%= link_to "Edit", edit_member_path( m ) %></li>
+		<li><%= link_to "Delete", member_path( m ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+<% end %>

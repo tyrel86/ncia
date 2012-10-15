@@ -1,0 +1,10 @@
+<%= link_to "Create New", new_staff_path %>
+
+<% @people.each do |p| %>
+	<ul class="admin-index">		
+		<li><%= p.name %></li>
+		<li><%= p.type %></li>
+		<li><%= link_to "Edit", edit_staff_path( p ) %></li>
+		<li><%= link_to "Delete", staff_path( p ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+<% end %>

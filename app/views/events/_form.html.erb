@@ -1,0 +1,8 @@
+<%= simple_form_for event do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :location %>
+  <%= f.input :time, as: :datetime %>
+	<br />
+  <%= f.button :submit %>
+<% end %>

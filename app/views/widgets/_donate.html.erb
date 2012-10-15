@@ -1,0 +1,26 @@
+<div class='donate join'>
+
+<script>
+function checkval () {
+var amount = document.getElementById('ItemCost').value; 
+amount= amount.replace(/[^.0-9]+/g,'');
+document.getElementById('ItemCost').value = amount; 
+var amount2 = parseFloat(amount); if (amount2 < 25){alert("We apologize, but donations must be greater than or equal to $25 (Twenty Five Dollars)."); return false;}else{return true;}
+}
+</script>
+
+
+<form action="https://www.eprocessingnetwork.com/cgi-bin/wo/order.pl" method="post" onSubmit="return checkval();">
+	<h2 class="donate">Donate Today!<br />$
+	<input type="text" name="ItemCost" id="ItemCost" value="" size=8 maxlength=8 style='width:80px;'>
+	<input type=hidden name="QB" value="">
+	<input type="hidden" name="ItemQty" value="1"><input type="hidden" name="ItemDesc" value="Donation"><input <input type="submit" value="Donate">
+	<input type="hidden" name="ePNAccount" value="0211625">
+	<input type="hidden" name="ReturnToURL" value="http://www.thecannabisindustry.org">
+	<input type="hidden" name="BackgroundColor" value="White">
+	<input type="hidden" name="TextColor" value="Black">
+	<input type="hidden" name="LogoURL" value="http://cannapages.com/colorado/files/2011/05//41801_131429140247116_3724480_n.jpg">
+	<input type="hidden" name="LogoPosition" value="left"></h2>
+</form>
+
+</div>

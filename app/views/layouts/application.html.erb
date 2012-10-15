@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The National Voice for the Cannabis Industry</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+
+	<div class="span-24 header-container">
+		<div class="header">
+			<ul class="main-menu">
+				<li><%= link_to "Home", root_path %></li>
+				<li class="cust-drop-down-link"><%= link_to "About Us", "#" %>
+					<ul class="main-menu-drop-down">
+						<li><%= link_to "Mission and Vission", "/aboutus" %></li>
+						<li><%= link_to "Board", board_index_path %></li>
+						<li><%= link_to "Staff", staff_index_path %></li>
+						<li><%= link_to "Contact", "/contact" %></li>
+					</ul>
+				</li>
+				<li><%= link_to "Member directory", members_path %></li>
+				<li class="cust-drop-down-link"><%= link_to "Member benefits", "#" %>
+					<ul class="main-menu-drop-down">
+						<li><%= link_to "Industry Advocacy", "/industryadvocacy" %></li>
+						<li><%= link_to "Member Discounts", "#" %></li>
+						<li><%= link_to "Events", events_path %></li>
+						<li><%= link_to "Member Portal", "/contact" %></li>
+					</ul>
+				</li>
+				<li><%= link_to "Campaigns", "/campaigns" %></li>
+				<li><%= link_to "News", articles_path %></li>
+				<li><%= link_to "Join", "#" %></li>
+			</ul>
+			<h1 class="main-title">The National Voice for the<br />Cannabis Industry</h1>
+			<div class="social-container">
+				<%= link_to( image_tag("facebook.png"), "https://www.facebook.com/TheNCIA" ) %>
+				<%= link_to( image_tag("twitter.png"), "http://twitter.com/NCIAorg" ) %>
+				<%= link_to( image_tag("rss.png"), "https://www.facebook.com/TheNCIA" ) %>
+			</div>
+		</div>
+	</div>
+
+	<div class="span-6 side-bar-left">
+		<%= link_to( image_tag( @banner.image(:side), class: "banner" ), @banner.url ) %>
+		<%= render "widgets/join" %>
+		<%= render "widgets/articles" %>
+		<%= render "widgets/donate" %>
+	</div>
+
+	<div class="span-12 main-content">
+		<%= yield %>
+	</div>
+
+	<div class="span-5 last">
+		<%= render "widgets/members" unless( params[:controller] == "members" and params[:action] == "index" ) %>
+	</div>
+
+	<div class="span-24">
+		<div class="footer-container">
+	</div>
+
+</div>
+</div>
+</body>
+
+</html>

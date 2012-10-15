@@ -1,0 +1,14 @@
+<% articles = Article.order_by( [[:created_at, :desc ]] ).limit(3) %>
+
+<h3 class="article-widget">Cannabis Industry News:</h3>
+<ul class="article-widget">
+	<% articles.each do |a| %>
+		<li class="articles-widget"><%= link_to a.title, article_path(a), class: 'article-widget' %></li>
+	<% end %>
+</ul>
+
+<div class="news-links">
+	<span class="more-news-link">More news</span><%= link_to( image_tag( "news-arrow.jpg", class: "news-arrow" ), articles_path ) %>
+</div>
+
+<%= link_to( image_tag( "newspaper.jpg", class: "newspaper" ), articles_path ) %>

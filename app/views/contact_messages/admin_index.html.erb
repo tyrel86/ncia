@@ -1,0 +1,10 @@
+<% @messages.each do |m| %>
+	<ul class="admin-index">		
+		<li><%= m.name %></li>
+		<li><%= link_to "Reply at #{m.email}", "mailto:#{m.email}" %></li>
+		<li><%= link_to "Delete", contact_message_path( m ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+	<p>
+		<%= m.content %>
+	</p>
+<% end %>

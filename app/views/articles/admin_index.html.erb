@@ -1,0 +1,8 @@
+<%= link_to "Create New", new_article_path %>
+<% @articles.each do |a| %>
+	<ul class="admin-index">		
+		<li><%= a.title %></li>
+		<li><%= link_to "Edit", edit_article_path( a ) %></li>
+		<li><%= link_to "Delete", article_path( a ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+<% end %>

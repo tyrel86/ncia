@@ -1,0 +1,13 @@
+<%= tinymce_assets %>
+
+<%= simple_form_for person, :html => {:multipart => true} do |f| %>
+  <%= f.input :name %>
+  <%= f.input :title %>
+	<%= f.input :bio, as: :text, :input_html => { class: 'tinymce text-edit' } %>
+	<%= f.input :type, :collection => ["staff", "strain"] %>
+	<%= f.file_field :image %>
+	<br />
+  <%= f.button :submit %>
+<% end %>
+
+<%= tinymce %>

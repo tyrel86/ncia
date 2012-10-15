@@ -1,0 +1,15 @@
+<% total = @members_banner.size %>
+<% count = 1 %>
+<div class="member-widget">
+	<% @members_banner.each do |m| %>
+		<% member_class = "member-widget" %>
+		<% member_class += " off hidden" if count > 5 %>
+		<% member_class += " on" if count <= 5 %>
+		<%= image_tag m.image.url(:thumb), class: member_class, "data-index" => count %>
+		<% count += 1 %>
+	<% end %>
+	<div class="ncia-btn"><h4 class="member-widget"><%= link_to "MEMBER DIRECTORY", members_path %></h3></div>
+</div>
+
+<div id="member-laston" data-value=5></div>
+<div id="member-count" data-value=<%= count - 1 %>></div>

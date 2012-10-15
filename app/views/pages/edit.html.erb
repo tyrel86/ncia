@@ -1,0 +1,9 @@
+<%= tinymce_assets %>
+
+<%= simple_form_for @page, url: "/pages/#{@page.title}", html: { method: :put } do |f| %>
+  <%= f.input :content, as: :text, :input_html => { class: 'tinymce text-edit' } %>
+	<br />
+  <%= f.button :submit %>
+<% end %>
+
+<%= tinymce %>

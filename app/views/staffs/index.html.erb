@@ -1,0 +1,13 @@
+<% if @people.empty? %>
+	<p>Sorry no entries at this time we will have them up very soon!</p>
+<% end %>
+
+<% @people.each do |p| %>
+	<div class="bio-container">
+		<h6 class="bio"><%= "#{p.name}, #{p.title}" %></h6>
+		<p class="bio">
+			<%= image_tag p.image.url(:thumb), class: "bio" %>
+			<%= raw p.bio %>
+		</p>
+	</div>
+<% end %>

@@ -1,0 +1,13 @@
+ul.admin-index {
+	list-style: none;
+	font-size: 14pt;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+ul.admin-index li {
+	display: inline;
+	margin-right: 10px;
+}

@@ -1,0 +1,8 @@
+<% @articles.each do |a| %>
+
+	<h4><%= link_to a.title, article_path( a ) %></h4>
+	<p><%= raw HTML_Truncator.truncate( a.content, 120  ) %></p>
+
+<% end %>
+
+<%= paginate @articles, :params => { controller: 'articles', action: 'index' } %>

@@ -1,0 +1,9 @@
+<%= simple_form_for member, :html => {:multipart => true} do |f| %>
+  <%= f.input :name %>
+	<%= f.input :description, as: :text %>
+  <%= f.input :tags %>
+  <%= f.input :discount, as: :text %>
+	<%= f.file_field :image %>
+	<br />
+  <%= f.button :submit %>
+<% end %>

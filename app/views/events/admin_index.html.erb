@@ -1,0 +1,8 @@
+<%= link_to "Create New", new_event_path %>
+<% @events.each do |e| %>
+	<ul class="admin-index">		
+		<li><%= e.name %></li>
+		<li><%= link_to "Edit", edit_event_path( e ) %></li>
+		<li><%= link_to "Delete", event_path( e ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+<% end %>
