@@ -4,7 +4,7 @@ class User
   
   attr_accessible :username, :email, :password, :password_confirmation
 	
-	before_create { generate_token(:auth_token) }  
+	before_create :generate_token
 
   attr_accessor :password, :password_confirmation
   
@@ -65,17 +65,22 @@ class User
   end
 
 	def send_password_reset
-		generate_token(:password_reset_token)
+		generate_token_reset
 		self.password_reset_sent_at = Time.zone.now
 		save!
 		UserMailer.password_reset(self).deliver
 	end
 
-	def generate_token(column)
+	def generate_token
 		begin
-			self[column] = SecureRandom.urlsafe_base64
-		end while User.exists?(column => self[column])
+			self.auth_token = SecureRandom.urlsafe_base64
+		end while User.find_by( :auth_token => auth_token).nil?
 	end
 
+	def generate_token_reset
+		begin
+			self.password_reset_token = SecureRandom.urlsafe_base64
+		end while User.find_by( :password_reset_token => password_reset_token ).nil?
+	end
 	
 end
