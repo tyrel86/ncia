@@ -1,0 +1,6 @@
+<% @blogs.each do |b| %>
+
+	<h4><%= link_to b.title, blog_path( b ) %></h4>
+	<p><%= raw HTML_Truncator.truncate( b.content, 120  ) %></p>
+
+<% end %>

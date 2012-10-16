@@ -1,5 +1,7 @@
 class StaffsController < ApplicationController
 
+	before_filter :require_admin, except: [:staff_index, :board_index]
+
 	def staff_index
 		@people = Staff.where( type: 0 )
 		render "index"

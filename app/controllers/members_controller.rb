@@ -1,5 +1,8 @@
 class MembersController < ApplicationController
 
+	before_filter :require_member, only: [:portal_show, :edit, :update]
+	before_filter :require_admin, only: [:new, :create, :destroy, :admin_index]
+	
 	def index
 		@regular_members = Member.where( type: "Regular" )
 		@sustaining_members = Member.where( type: "Sustaining" )
@@ -16,8 +19,12 @@ class MembersController < ApplicationController
 	end
 
 	def portal_show
-		@member = Member.find( params[:id] )
-		render layout: "portal"
+		@member = current_user.member
+		if @member.name.nil?
+			render "edit", layout: "portal", notice: "Your member profile which gives you exposure through member discounts and our directory is not filled out. Its very easy just fill out the form bellow. Thank you."
+		else
+			render layout: "portal"
+		end
 	end
 
 	def new

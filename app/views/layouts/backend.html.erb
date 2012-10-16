@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">NCIA Admin Panel</a>
+          <a class="brand" href="#">Admin</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 							  <li class="dropdown">  
@@ -87,8 +87,19 @@
 											<li><%= link_to "Create New", new_staff_path  %></li>
 									</ul>  
 								</li> 
+							  <li class="dropdown">  
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Member Blog<b class="caret"></b></a>  
+									<ul class="dropdown-menu">
+											<li><%= link_to "See All", blogs_admin_index_path  %></li>
+											<li><%= link_to "Create New", new_blog_path  %></li>
+									</ul>  
+								</li> 
 								<li><%= link_to "Messages", contact_messages_admin_index_path %></li>
+								<li class="divider-vertical"></li>
             </ul>
+						<p class="pull-right navbar-text">
+							Logged in as <%= current_user.username %> | <%= link_to "Log out", logout_path %>
+						</p>
           </div><!--/.nav-collapse -->
         </div>
       </div>

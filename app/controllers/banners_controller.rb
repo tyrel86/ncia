@@ -1,6 +1,8 @@
 class BannersController < ApplicationController
 
-  def admin_index
+	before_filter :require_admin
+  
+	def admin_index
 		@banners = Banner.all.reverse
 	
 		render layout: "backend"

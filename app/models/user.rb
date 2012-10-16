@@ -7,13 +7,20 @@ class User
 	before_create :generate_token
 
   attr_accessor :password, :password_confirmation
+
+	has_one :member
+	has_many :blogs
   
-  field :username,        :type => String
-  field :email,           :type => String
-  field :password_hash,   :type => String
-  field :password_salt,   :type => String
-  field :auth_token,      :type => String
-	field :admin,            :type => Boolean
+  field :username,               :type => String
+  field :email,                  :type => String
+  field :password_hash,          :type => String
+  field :password_salt,          :type => String
+  field :auth_token,             :type => String
+  field :password_reset_token,   :type => String
+  field :password_reset_sent_at, :type => Time
+	field :admin,                  :type => Boolean
+	field :active,                  :type => Boolean
+
   
   before_save :prepare_password
   
@@ -23,35 +30,16 @@ class User
 	validates_uniqueness_of :email, :email, :allow_blank => false
   validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
-  validate :check_password
-  
-  def check_password
-    if self.new_record?
-      errors.add(:base, "Password can't be blank") if self.password.blank?
-      errors.add(:base, "Password and confirmation does not match") unless self.password == self.password_confirmation
-      errors.add(:base, "Password must be at least 4 chars long") if self.password.to_s.size.to_i < 4
-    else
-      if self.password.blank?
-        errors.add(:base, "Password can't be blank") if self.password.blank?
-      else
-        errors.add(:base, "Password and confirmation does not match") unless self.password == self.password_confirmation
-        errors.add(:base, "Password must be at least 4 chars long") if self.password.to_s.size.to_i < 4
-      end
-    end
-  end
   
   # login can be either username or email address
   def self.authenticate(login, pass)
-    user = first(:conditions => {:username => login}) || first(:conditions => {:email => login})
+    user = find_by( :username => login )  || find_by( :email => login )
     return user if user && user.matching_password?(pass)
   end
   
   def matching_password?(pass)
     self.password_hash == encrypt_password(pass)
   end
-  
-  private
-  
   
   def prepare_password
     unless password.blank?
@@ -74,13 +62,14 @@ class User
 	def generate_token
 		begin
 			self.auth_token = SecureRandom.urlsafe_base64
-		end while User.find_by( :auth_token => auth_token).nil?
+			puts auth_token
+		end while ( ! User.find_by( :auth_token => self.auth_token ).nil? )
 	end
 
 	def generate_token_reset
 		begin
 			self.password_reset_token = SecureRandom.urlsafe_base64
-		end while User.find_by( :password_reset_token => password_reset_token ).nil?
+		end while ( ! User.find_by( :password_reset_token => self.password_reset_token ).nil? )
 	end
 	
 end

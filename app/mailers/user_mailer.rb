@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "info@thecannabisindustry.org"
+  default from: "thewhitetyrel@gmail.com"
 
   def password_reset(user)
 		@user = user

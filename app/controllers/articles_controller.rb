@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+	
+	before_filter :require_admin, except: [:index, :show]
 
 	def index
 		articles = Article.all.to_a

@@ -1,6 +1,6 @@
 <%= tinymce_assets %>
 
-<%= simple_form_for article, :html => {:multipart => true} do |f| %>
+<%= simple_form_for article do |f| %>
   <%= f.input :title %>
 	<%= f.input :content, as: :text, :input_html => { class: 'tinymce text-edit' } %>
 	<%= f.input :author %>

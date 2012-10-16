@@ -1,7 +1,6 @@
 window.setInterval( function() {
-	var last_on = $("#member-laston").data('value')
 	var total = $("#member-count").data('value')
-
+	var last_on = $('#member-laston').data('value')
 	var next_on_index = next_on();
 	var next_off_index = next_off();
 	$("#member-laston").data('value', next_on_index);
@@ -32,4 +31,4 @@ window.setInterval( function() {
 		}
 	}
 
-}, 3000);
+}, 7000);

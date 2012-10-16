@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
-  def home
+	
+	before_filter :require_admin, except: [:home, :show]
+  
+	def home
 		@page = Page.where(title: "home").first
 		render "show"
   end

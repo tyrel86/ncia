@@ -27,7 +27,8 @@
 						<li><%= link_to "Industry Advocacy", "/industryadvocacy" %></li>
 						<li><%= link_to "Member Discounts", "#" %></li>
 						<li><%= link_to "Events", events_path %></li>
-						<li><%= link_to "Member Portal", "/contact" %></li>
+						<% link = (logged_in? ? members_portal_show_path( current_user ) : login_path) %>
+						<li><%= link_to "Member Portal", link %></li>
 					</ul>
 				</li>
 				<li><%= link_to "Campaigns", "/campaigns" %></li>

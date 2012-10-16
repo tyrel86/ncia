@@ -1,5 +1,6 @@
 class ContactMessagesController < ApplicationController
 	
+	before_filter :require_admin, except: [:create]
 	skip_before_filter :verify_authenticity_token
 
 	def admin_index

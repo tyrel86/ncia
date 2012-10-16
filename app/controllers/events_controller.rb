@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+	before_filter :require_admin, except: [:index]
+	
 	def index
 		@events = Event.all
 	end

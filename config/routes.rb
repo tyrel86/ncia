@@ -1,5 +1,7 @@
 Ncia::Application.routes.draw do
 
+	get "/blogs/admin_index" => "blogs#admin_index"
+  resources :blogs
 
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout

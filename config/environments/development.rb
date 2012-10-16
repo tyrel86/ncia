@@ -43,8 +43,8 @@ Ncia::Application.configure do
 		domain: "localhost:3000",
 		authentication: "plain",
 		enable_starttls_auto: true,
-		user_name: ENV["bmigee108"],
-		password: ENV["AbcD1234ZxyW"]
+		user_name: "bmigee108",
+		password: "AbcD1234ZxyW"
 	}
 
 	config.action_mailer.default_url_options = { :host => "localhost:3000" }

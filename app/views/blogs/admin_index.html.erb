@@ -1,0 +1,8 @@
+<%= link_to "Create New", new_blog_path %>
+<% @blogs.each do |b| %>
+	<ul class="admin-index">		
+		<li><%= b.title %></li>
+		<li><%= link_to "Edit", edit_blog_path( b ) %></li>
+		<li><%= link_to "Delete", blog_path( b ), confirm: "Are you sure?", method: :delete %></li>
+	</ul>
+<% end %>

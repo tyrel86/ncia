@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+		render layout: "account"
   end
 
   def create
@@ -10,10 +11,18 @@ class SessionsController < ApplicationController
 			else
 				cookies[:auth_token] = user.auth_token
 			end
-			redirect_to root_url, :notice => "Logged in!"
+			if user.active
+				if user.admin
+					redirect_to new_banner_path, :notice => "Logged in!"
+				else
+					redirect_to members_portal_show_path( current_user ), :notice => "Logged in!"
+				end
+			else
+				redirect_to root_path, :notice => "You can enjoy the portal as soon as your account is activated"
+			end
 		else
 			flash.now.alert = "Invalid email or password"
-			render "new"
+			render "new", layout: "account"
     end
   end
 
