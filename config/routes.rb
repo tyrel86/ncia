@@ -1,5 +1,13 @@
 Ncia::Application.routes.draw do
 
+
+  match 'signup' => 'users#new', :as => :signup
+  match 'logout' => 'sessions#destroy', :as => :logout
+  match 'login' => 'sessions#new', :as => :login
+  resources :sessions
+  resources :users
+	resources :password_resets, only: [:create, :edit, :update, :new]
+
 	get "members/admin_index" => "members#admin_index"
 	get "members/portal/:id" => "members#portal_show", as: "members_portal_show"
   resources :members

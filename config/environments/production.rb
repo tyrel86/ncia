@@ -66,4 +66,16 @@ Ncia::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
 	Paperclip.options[:command_path] = "/usr/bin/convert"
+
+	config.action_mailer.smtp_settings = {
+		address: "smtp.gmail.com",
+		port: 587,
+		domain: "198.58.98.244",
+		authentication: "plain",
+		enable_starttls_auto: true,
+		user_name: ENV["bmigee108"],
+		password: ENV["AbcD1234ZxyW"]
+	}
+
+	config.action_mailer.default_url_options = { :host => "198.58.98.244" }
 end

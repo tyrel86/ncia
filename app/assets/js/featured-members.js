@@ -1,4 +1,4 @@
-window.setInterval(function() {
+window.setInterval( function() {
 	var last_on = $("#member-laston").data('value')
 	var total = $("#member-count").data('value')
 
@@ -9,14 +9,18 @@ window.setInterval(function() {
 	$('[data-index=' + next_on_index + ']').toggleClass("hidden")
 	$('[data-index=' + next_off_index + ']').toggleClass("hidden");
 
+	// alert( "Laston " + last_on + "\ntotal " + total + "\nnext_on " + next_on_index + "\nnext_off " + next_off_index );
+
 	function next_off() {
-		if( last_on - 4 == 0 ) {
-			return 7;
+		var simple_case = last_on - 4
+		if( simple_case == 0 ) {
+			return total;
 		}
-		if( last_on - 4 > 0 ) {
+		if( simple_case > 0 ) {
 			return last_on - 4;
-		} else {
-			return 7 - Math.abs((last_on - 4));
+		}
+		if( simple_case < 0 ) {
+			return total + simple_case;
 		}
 	}
 
@@ -28,4 +32,4 @@ window.setInterval(function() {
 		}
 	}
 
-}, 7000);
+}, 3000);

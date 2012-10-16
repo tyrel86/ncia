@@ -1,9 +1,11 @@
+<%= tinymce_assets %>
 <%= simple_form_for member, :html => {:multipart => true} do |f| %>
   <%= f.input :name %>
-	<%= f.input :description, as: :text %>
+	<%= f.input :description, as: :text, :input_html => { class: 'tinymce text-edit' }%>
   <%= f.input :tags %>
-  <%= f.input :discount, as: :text %>
+  <%= f.input :discount, as: :text, :input_html => { class: 'tinymce text-edit' }%>
 	<%= f.file_field :image %>
 	<br />
   <%= f.button :submit %>
 <% end %>
+<%= tinymce %>

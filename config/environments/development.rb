@@ -36,4 +36,16 @@ Ncia::Application.configure do
   config.assets.debug = true
 
 	Paperclip.options[:command_path] = "/usr/bin/convert"
+
+	config.action_mailer.smtp_settings = {
+		address: "smtp.gmail.com",
+		port: 587,
+		domain: "localhost:3000",
+		authentication: "plain",
+		enable_starttls_auto: true,
+		user_name: ENV["bmigee108"],
+		password: ENV["AbcD1234ZxyW"]
+	}
+
+	config.action_mailer.default_url_options = { :host => "localhost:3000" }
 end

@@ -3,8 +3,7 @@
 <div class="member-widget">
 	<% @members_banner.each do |m| %>
 		<% member_class = "member-widget" %>
-		<% member_class += " off hidden" if count > 5 %>
-		<% member_class += " on" if count <= 5 %>
+		<% member_class += " hidden" if count > 5 %>
 		<%= image_tag m.image.url(:thumb), class: member_class, "data-index" => count %>
 		<% count += 1 %>
 	<% end %>
@@ -12,4 +11,4 @@
 </div>
 
 <div id="member-laston" data-value=5></div>
-<div id="member-count" data-value=<%= count - 1 %>></div>
+<div id="member-count" data-value=<%= total %>></div>
