@@ -52,11 +52,12 @@ ul.main-menu-drop-down li {
 }
 
 body {
-	background-image: url('/assets/bkg.jpg');
+	background-image: url('/assets/bkg2.jpg');
 	background-repeat: no-repeat;
 	background-position-x: center;
 	background-position-y: 15px;
 	background-color: #FDFDD6;
+	background-size: auto 560px;
 }
 
 .header {
@@ -288,7 +289,7 @@ div.bio-container {
 }
 
 div.member-widget {
-	background-image: url('/assets/featureband.jpg');
+	background-image: url('/assets/featureband2.jpg');
 	background-repeat: no-repeat;
 	border: 2px solid #126537;
 	width: 176px;

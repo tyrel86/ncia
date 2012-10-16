@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def get_members_for_banner
-		@members_banner = Member.all
+		@members_banner = Member.get_array_for_banner
 	end
 
 	def logged_in?
