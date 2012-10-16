@@ -19,6 +19,15 @@ class EventsController < ApplicationController
 	end
 
 	def create
+		year = params[:event]['time(1i)']
+		month = params[:event]['time(2i)']
+		day = params[:event]['time(3i)']
+		hour = params[:event]['time(4i)']
+		minuet = params[:event]['time(5i)']
+	
+		params[:event].remove!( 'time(1i)', 'time(2i)', 'time(3i)', 'time(4i)', 'time(5i)' )
+
+		params[:event][:time] = Time.new( year, month, day, hour, minuet )
 		@event = Event.new( params[:event] )
 		if @event.save
 			redirect_to events_admin_index_path
