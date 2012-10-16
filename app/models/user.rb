@@ -62,7 +62,6 @@ class User
 	def generate_token
 		begin
 			self.auth_token = SecureRandom.urlsafe_base64
-			puts auth_token
 		end while ( ! User.find_by( :auth_token => self.auth_token ).nil? )
 	end
 
