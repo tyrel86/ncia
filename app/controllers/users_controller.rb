@@ -10,8 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 		@user.admin = false
 		@user.active = false
-		@user.member = Member.new
     if @user.save
+      @user.member = Member.new
       redirect_to root_url, :notice => "Thank you for signing up! You are ready to log in as soon as you complete the payment."
     else
       render :action => 'new', layout: "account"
