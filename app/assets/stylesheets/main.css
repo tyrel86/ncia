@@ -3,8 +3,6 @@
 }
 
 .member-image-alt {
-	position: relative;
-	top: -27px;
 	color: #007646;
 }
 
@@ -21,8 +19,9 @@
 	padding: 27px;
 	padding-top: 0;
 	padding-bottom: 27px;
-	width: 84px;
+	width: 100px;
 	text-align: center;
+	vertical-align: middle;
 }
 
 ul.main-menu {
