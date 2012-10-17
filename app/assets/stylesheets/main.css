@@ -1,5 +1,29 @@
+.member-thumb-container {
+	text-align: center;
+}
 
+.member-image-alt {
+	position: relative;
+	top: -27px;
+	color: #007646;
+}
 
+.one-word {
+	font-size: 18px;
+}
+
+.acronym {
+	font-size: 27px;
+}
+
+.member-thumb {
+	display: inline-block;
+	padding: 27px;
+	padding-top: 0;
+	padding-bottom: 27px;
+	width: 84px;
+	text-align: center;
+}
 
 ul.main-menu {
 	list-style: none;

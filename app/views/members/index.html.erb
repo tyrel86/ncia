@@ -1,13 +1,18 @@
-
 <div class="member-heading">Sponsoring</div>
-<% @sponsoring_members.each do |m| %>
-	<%= link_to( image_tag( m.image.url(:thumb) ), m ) %>
-<% end %>
+<div class="member-thumb-container">
+	<% @sponsoring_members.each do |m| %>
+		<%= render "thumb", member: m %>
+	<% end %>
+</div>
 <div class="member-heading">Sustaining</div>
-<% @sustaining_members.each do |m| %>
-	<%= link_to( image_tag( m.image.url(:thumb) ), m ) %>
-<% end %>
+<div class="member-thumb-container">
+	<% @sustaining_members.each do |m| %>
+		<%= render "thumb", member: m %>
+	<% end %>
+</div>
 <div class="member-heading">Regular Members</div>
-<% @regular_members.each do |m| %>
-	<%= link_to( image_tag( m.image.url(:thumb) ), m ) %>
-<% end %>
+<div class="member-thumb-container">
+	<% @regular_members.each do |m| %>
+		<%= render "thumb", member: m %>
+	<% end %>
+</div>
