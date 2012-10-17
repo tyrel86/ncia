@@ -38,7 +38,7 @@ class Member
 	#Class methods
 	class << self
 		def get_featured_array
-			Member.all.inject([]) do |r,e|
+			all.inject([]) do |r,e|
 				r.push e unless File.basename( e.image.url(:thumb) ) == "missing.png"
 				break if r.size >= 15
 				r
