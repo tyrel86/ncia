@@ -1,0 +1,7 @@
+<div class="member-show-container" style="margin-bottom:10px;">
+	<%= image_tag( member.image.url(:thumb), style: "float:left;margin-right:10px;margin-bottom:10px;" ) unless File.basename( member.image.url(:thumb) ) == "missing.png" %>
+
+	<h3 style="text-decoration:underline;"><%= link_to member.name, member, style: "color:#126537" %></h3>
+	<p><%= raw member.discount %></p>
+	<hr />
+</div>

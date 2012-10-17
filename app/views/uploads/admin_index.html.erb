@@ -1,0 +1,9 @@
+<%= link_to "Upload New File", new_upload_path %>
+<% @uploads.each do |f| %>
+	<ul class="admin-index">		
+		<li><%= f.name %></li>
+		<li><%= link_to "view", f.file.url %></li>
+		<li><%= link_to "Delete", upload_path( f ), confirm: "Are you sure?", method: :delete %></li><br/>
+		<li>Embed code: <span class="code"><%= "<a href=#{f.file.url}>What you want the link to say</a>" %></span></li>
+	</ul>
+<% end %>

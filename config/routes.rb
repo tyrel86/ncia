@@ -8,8 +8,12 @@ Ncia::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   resources :sessions
   resources :users
+	put "passwords/execute" => "password_resets#execute", as: "update_password_while_logged_in"
 	resources :password_resets, only: [:create, :edit, :update, :new]
 
+	post "members/search_index" => "members#search_index", as: "members_search_index"
+	get "members/discounts" => "members#discounts", as: "member_discounts"
+	post "members/discounts" => "members#discounts_search", as: "member_discounts_search"
 	get "members/admin_index" => "members#admin_index"
 	get "members/portal/:id" => "members#portal_show", as: "members_portal_show"
   resources :members
@@ -34,6 +38,9 @@ Ncia::Application.routes.draw do
 	resources :banners, :only => [:new, :create, :edit, :update, :destroy]
 	get "/banners/admin_index" => "banners#admin_index", as: :banners_admin_index
 	get "/banners/:id/activate" => "banners#activate", as: :activate_banner
+
+	resources :uploads, :only => [:new, :create, :destroy]
+	get "/uploads/admin_index" => "uploads#admin_index", as: :uploads_admin_index
 
 	get  '/:title' => 'pages#show', as: "pages"
 	get  'pages/:title/edit' => 'pages#edit'

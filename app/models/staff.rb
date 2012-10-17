@@ -1,5 +1,4 @@
 class Staff
-
   include Mongoid::Document
 	include Mongoid::Paperclip
 	include Mongoid::Timestamps

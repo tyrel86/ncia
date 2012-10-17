@@ -1,6 +1,21 @@
 class PasswordResetsController < ApplicationController
 
+	before_filter :require_member, only: :execute
+
+	def execute
+		@user = current_user
+		if @user.update_attributes(params[:user])
+			redirect_to new_banner_path, :notice => "Password has been reset!"
+		else
+			render :edit
+		end
+	end
+
+	#All bellow are email reset
 	def create
+		if current_user
+			redirect_to action: :execute
+		end
 		user = User.find_by( email: params[:email] )
 		if user
 			user.send_password_reset
@@ -11,7 +26,16 @@ class PasswordResetsController < ApplicationController
 	end
 
 	def edit
-		@user = User.find_by( password_reset_token: params[:id] )
+		if current_user
+			@user = current_user
+		else
+			@user = User.find_by( password_reset_token: params[:id] )
+		end
+		if current_user
+			render "edit_while_logged_in", layout: "portal"
+		else
+			render layout: "account"
+		end
 	end
 
 	def update

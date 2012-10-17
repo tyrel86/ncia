@@ -9,6 +9,35 @@ class MembersController < ApplicationController
 		@sponsoring_members = Member.where( type: "Sponsoring" )
 	end
 
+	def discounts_search
+		state = params[:member][:state]
+		state.empty? ? (state = nil) : true
+		@members = Member.search( params[:member][:query], state )
+		@members = @members.inject([]) do |r,m|
+			(m.discount.nil? or m.discount.empty?) ? r : r.push(m)
+		end
+	end
+
+	def discounts
+		members = Member.all.to_a
+		@members = []
+		5.times do
+			begin
+				member = members.sample
+				members.delete member
+			end while member.discount.nil? or member.discount.empty?
+			@members.push member
+		end
+	end
+
+	def search_index
+		members = Member.where( state: params[:member][:state] )
+		@regular_members = members.where( type: "Regular" )
+		@sustaining_members = members.where( type: "Sustaining" )
+		@sponsoring_members = members.where( type: "Sponsoring" )
+		render "index"
+	end
+
 	def admin_index
 		@members = Member.all
 		render layout: "backend"

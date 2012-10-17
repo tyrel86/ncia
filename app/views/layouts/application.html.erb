@@ -25,7 +25,7 @@
 				<li class="cust-drop-down-link"><%= link_to "Member benefits", "#" %>
 					<ul class="main-menu-drop-down">
 						<li><%= link_to "Industry Advocacy", "/industryadvocacy" %></li>
-						<li><%= link_to "Member Discounts", "#" %></li>
+						<li><%= link_to "Member Discounts", member_discounts_path %></li>
 						<li><%= link_to "Events", events_path %></li>
 						<% link = (logged_in? ? members_portal_show_path( current_user ) : login_path) %>
 						<li><%= link_to "Member Portal", link %></li>

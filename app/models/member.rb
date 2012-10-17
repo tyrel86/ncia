@@ -10,9 +10,13 @@ class Member
   field :tags, type: String
 	field :discount, type: String
 	field :type, type: String
+	field :state, type: String
 
 	has_mongoid_attached_file :image, :styles => { :thumb => '135x75>', :large => '200X' }
 	attr_accessible :name, :description, :tags, :image, :discount, :discount
+	attr_accessor :query
+
+	validates_inclusion_of :state, in: LEGAL_STATE_ARRAY
 
 	def safe_image( size = :thumb )
 		the_url = image.url( size )
@@ -42,6 +46,17 @@ class Member
 			return r if r.size >= 15
 			r
 		end
-	end	
+	end
+
+	def self.search( query, state )
+		members = all
+		query1 = members.where( name: Regexp.new( query, "i" ) )
+		query1 = query1.where( state: state ) if state
+		query2 = members.where( tags: Regexp.new( query, "i" ) )
+		query2 = query2.where( state: state ) if state
+		query3 = members.where( discount: Regexp.new( query, "i" ) )
+		query3 = query3.where( state: state ) if state
+		(query1 + query2 + query3).uniq
+	end
 
 end

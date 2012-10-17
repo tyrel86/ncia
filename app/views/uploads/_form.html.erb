@@ -1,0 +1,6 @@
+<%= simple_form_for upload, :html => {:multipart => true} do |f| %>
+  <%= f.input :name %>
+	<%= f.file_field :file %>
+	<br />
+  <%= f.button :submit %>
+<% end %>

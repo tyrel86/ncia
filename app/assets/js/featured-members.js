@@ -32,3 +32,16 @@ window.setInterval( function() {
 	}
 
 }, 7000);
+
+$(document).ready( function() {
+	$('.expand-contract').click( function() {
+		var lis = $(this).parent().next().children().find('a')
+		if( lis.size() > 9 ) {
+			var lis_over_nine = lis.slice(9,lis.size())
+			lis_over_nine.each( function() {
+				$(this).toggleClass( "hidden" )
+			})
+		}
+		$(this).html() == "+" ? $(this).html("-") : $(this).html("+") 
+	})
+})

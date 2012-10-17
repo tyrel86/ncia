@@ -1,3 +1,4 @@
 <div class="member-thumb">
-	 <%= link_to( member.safe_image, member ) %>
+	<% a_class = ( i > 9 ) ? "hidden" : "" %>
+	<%= link_to( member.safe_image, member, class: a_class ) %>
 </div>

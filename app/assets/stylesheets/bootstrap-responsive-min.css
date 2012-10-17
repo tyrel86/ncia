@@ -30,8 +30,16 @@
 }
 
 .nav-collapse.collapse {
-	position: relative;
-	left: 62px;
+	position: absolute;
+	left: 125px;
 	top: 79px;
 	max-width: 1108px;
+}
+
+.code {
+	font-size: 9px;
+	vertical-align: middle;
+	background-color: lightgrey;
+	margin-left: 3px;
+	padding: 0px 7px;
 }

@@ -1,18 +1,30 @@
-<div class="member-heading">Sponsoring</div>
+<%= simple_form_for Member.new, :url => members_search_index_path do |f| %>
+  <%= f.input_field :state, collection: LEGAL_STATE_ARRAY - ['All'], prompt: "Filter By State" %>
+  <%= f.submit 'Filter' %>
+<% end %>
+
+<% index = 1 %>
+<div class="member-heading">Sponsoring<span class="expand-contract">+</span></div>
 <div class="member-thumb-container">
 	<% @sponsoring_members.each do |m| %>
-		<%= render "thumb", member: m %>
+		<%= render "thumb", member: m, i: index %>
+		<% index += 1 %>
 	<% end %>
+	<% index = 1 %>
 </div>
-<div class="member-heading">Sustaining</div>
+<div class="member-heading">Sustaining<span class="expand-contract">+</span></div>
 <div class="member-thumb-container">
 	<% @sustaining_members.each do |m| %>
-		<%= render "thumb", member: m %>
+		<%= render "thumb", member: m, i: index %>
+		<% index += 1 %>
 	<% end %>
+	<% index = 1 %>
 </div>
-<div class="member-heading">Regular Members</div>
+<div class="member-heading">Regular Members<span class="expand-contract">+</span></div>
 <div class="member-thumb-container">
 	<% @regular_members.each do |m| %>
-		<%= render "thumb", member: m %>
+		<%= render "thumb", member: m, i: index %>
+		<% index += 1 %>
 	<% end %>
+	<% index = 1 %>
 </div>
