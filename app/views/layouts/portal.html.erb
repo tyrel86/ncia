@@ -46,6 +46,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
 							<li><%= link_to "Exclusive Blog", blogs_path %></li>
+							<li><%= link_to "Member Discounts", member_discounts_path %></li>
 							<li><%= link_to "Member Profile", edit_member_path( current_user.member ) unless current_user.member.nil? %></li>
 							<li><%= link_to "Change Password", edit_password_reset_path("logged_in") %></li>
             </ul>

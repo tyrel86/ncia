@@ -70,8 +70,11 @@ class Member
 	end
 
 	def set_and_get_aproval_hash
+		return aproval_hash if aproval_hash
 		self.aproval_hash = SecureRandom.urlsafe_base64
 		save
+		reload
+		aproval_hash
 	end
 
 	#Class methods

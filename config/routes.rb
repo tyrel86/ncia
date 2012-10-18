@@ -5,7 +5,7 @@ Ncia::Application.routes.draw do
 
 	match 'join'   => 'users#new', as: :join
 	get   'users/payment' => 'users#payment', as: :payment
-	post  'users/activate/:activation' => 'users#activate', as: :activate_user
+	match 'users/activate/:activation' => 'users#activate', as: :activate_user
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   resources :sessions
