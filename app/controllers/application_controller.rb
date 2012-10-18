@@ -3,9 +3,19 @@ class ApplicationController < ActionController::Base
 	helper :all
 	helper_method :current_user, :logged_in?
 
-	before_filter :get_banner, :get_members_for_banner
+	before_filter :get_banner, :get_members_for_banner, :force_finish_signup
+	after_filter 
 
 	private
+
+	def force_finish_signup
+		return if ( current_user.nil? or current_user.active? )
+		path = current_user.decern_next_step
+		controller = params[:controller]
+		unless User.in_next_step( controller, path )
+			redirect_to path
+		end
+	end
 
 	def get_banner
 		@banner = Banner.the_current
@@ -24,11 +34,14 @@ class ApplicationController < ActionController::Base
   end
   
   def require_member
-    unless current_user and current_user.active
+    unless current_user
       flash[:notice] = "You must be logged in to view this page"
       redirect_to new_session_url
       return false
     end
+		unless current_user.active
+			redirect_to join_path
+		end
   end
   
   def require_admin

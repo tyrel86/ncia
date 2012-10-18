@@ -1,0 +1,47 @@
+<div id="agree-var" data-agree="false" data-seen="false"></div>
+
+<FORM ACTION="https://www.eProcessingNetwork.com/cgi-bin/dbe/order.pl"
+   METHOD=POST id="prepay-submit">
+<INPUT TYPE="HIDDEN" NAME="ePNAccount"
+   VALUE="0211625">
+<INPUT TYPE="HIDDEN" NAME="Total" VALUE="<%= @user.member.price %>">
+<INPUT TYPE="HIDDEN" NAME="FirstName" VALUE="<%= @user.first_name %>">
+<INPUT TYPE="HIDDEN" NAME="LastName" VALUE="<%= @user.last_name %>">
+<INPUT TYPE="HIDDEN" NAME="Company" VALUE="<%= @user.member.name %>">
+<INPUT TYPE="HIDDEN" NAME="Address" VALUE="<%= @user.member.address %>">
+<INPUT TYPE="HIDDEN" NAME="City" VALUE="<%= @user.member.city %>">
+<INPUT TYPE="HIDDEN" NAME="State" VALUE="<%= STATE_MAPPINGS[@user.member.state] %>">
+<INPUT TYPE="HIDDEN" NAME="Zip" VALUE="<%= @user.member.zip %>">
+<INPUT TYPE="HIDDEN" NAME="Country" VALUE="USA">
+<% phone = @user.member.phone %>
+<INPUT TYPE="HIDDEN" NAME="Phone" VALUE="<%= "#{phone[0..2]}-#{phone[3..5]}-#{phone[6..9]}" %>">
+<INPUT TYPE="HIDDEN" NAME="EMail" VALUE="<%= @user.email %>">
+<INPUT TYPE="HIDDEN" NAME="ID" VALUE=<%= @user.id %>>
+<INPUT TYPE="HIDDEN" NAME="ReturnApprovedURL"
+   VALUE="<%= activate_user_url @user.member.set_and_get_aproval_hash %>">
+<INPUT TYPE="HIDDEN" NAME="ReturnDeclinedURL"
+   VALUE="<%= activate_user_url "false" %>%>">
+<INPUT TYPE="HIDDEN" NAME="BackgroundColor"
+   VALUE=#FDFDD6>
+<INPUT TYPE="HIDDEN" NAME="TextColor"
+   VALUE=#000000>
+<INPUT TYPE="HIDDEN" NAME="LogoURL"
+   VALUE="http://198.58.98.244/assets/logo.png">
+<br />
+<h5>I agree to ensure my business follows NCIA's industry Code of Conduct for the duration of my membership.</h5>
+<a href="#terms" id="see" role="button" class="btn" data-toggle="modal" style="margin-bottom:10px;">Read The Code of Conduct</a>
+<a href="#" role="button" class="btn" style="margin-bottom:10px;" id="agree">I Agree</a>
+<br />
+<INPUT TYPE="SUBMIT" VALUE="Submit">
+</FORM>
+
+
+<div class="modal hide fade" id="terms">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>The National Cannabis Industry Code of Conduct</h4>
+  </div>
+  <div class="modal-body">
+    <p><%= render "shared/agreement" %></p>
+  </div>
+</div>

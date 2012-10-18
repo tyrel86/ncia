@@ -2,12 +2,16 @@ class PasswordResetsController < ApplicationController
 
 	before_filter :require_member, only: :execute
 
+	def new
+		render layout: "account"
+	end
+
 	def execute
 		@user = current_user
 		if @user.update_attributes(params[:user])
 			redirect_to new_banner_path, :notice => "Password has been reset!"
 		else
-			render :edit
+			render :edit, layout: "account"
 		end
 	end
 
@@ -19,9 +23,9 @@ class PasswordResetsController < ApplicationController
 		user = User.find_by( email: params[:email] )
 		if user
 			user.send_password_reset
-			redirect_to root_url, :notice => "Email sent with password reset instructions."
+			redirect_to login_url, :notice => "Email sent with password reset instructions."
 		else
-			redirect_to root_url, :notice => "The email you entered was not the one you signed up with please try again"
+			redirect_to login_url, :notice => "The email you entered was not the one you signed up with please try again"
 		end
 	end
 
@@ -43,9 +47,9 @@ class PasswordResetsController < ApplicationController
 		if @user.password_reset_sent_at < 2.hours.ago
 			redirect_to new_password_reset_path, :alert => "Password reset has expired."
 		elsif @user.update_attributes(params[:user])
-			redirect_to root_url, :notice => "Password has been reset!"
+			redirect_to login_url, :notice => "Password has been reset!"
 		else
-			render :edit
+			render :edit, layout: "account"
 		end
 	end
 

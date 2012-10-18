@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
 			end
 			if user.active
 				if user.admin
-					redirect_to new_banner_path, :notice => "Logged in!"
+					redirect_to new_banner_path
 				else
-					redirect_to members_portal_show_path( current_user ), :notice => "Logged in!"
+					redirect_to members_portal_show_path( current_user )
 				end
 			else
 				redirect_to root_path, :notice => "You can enjoy the portal as soon as your account is activated"

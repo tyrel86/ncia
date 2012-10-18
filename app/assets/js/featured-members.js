@@ -40,8 +40,13 @@ $(document).ready( function() {
 			var lis_over_nine = lis.slice(9,lis.size())
 			lis_over_nine.each( function() {
 				$(this).toggleClass( "hidden" )
+				$(this).parent().toggleClass( "hidden" )
 			})
 		}
 		$(this).html() == "+" ? $(this).html("-") : $(this).html("+") 
+	})
+
+	$('.close').click( function() {
+		$(this).parent().fadeOut("slow")
 	})
 })

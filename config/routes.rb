@@ -3,11 +3,13 @@ Ncia::Application.routes.draw do
 	get "/blogs/admin_index" => "blogs#admin_index"
   resources :blogs
 
-  match 'signup' => 'users#new', :as => :signup
+	match 'join'   => 'users#new', as: :join
+	get   'users/payment' => 'users#payment', as: :payment
+	post  'users/activate/:activation' => 'users#activate', as: :activate_user
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   resources :sessions
-  resources :users
+  resources :users, except: [:show]
 	put "passwords/execute" => "password_resets#execute", as: "update_password_while_logged_in"
 	resources :password_resets, only: [:create, :edit, :update, :new]
 

@@ -12,6 +12,7 @@
 /* overrides */
 .container {
 	min-height: 123px;
+	width: 1000px;
 }
 
 #logo {

@@ -4,19 +4,41 @@ class Member
 	include Mongoid::Timestamps
 
 	belongs_to :user
+	before_save   :scrub
 
   field :name, type: String
   field :description, type: String
   field :tags, type: String
 	field :discount, type: String
 	field :type, type: String
+	field :cycle, type: String
+	field :address, type: String
+	field :city, type: String
 	field :state, type: String
+	field :zip, type: String
+	field :phone, type: String
+	field :aproval_hash, type: String
 
 	has_mongoid_attached_file :image, :styles => { :thumb => '135x75>', :large => '200X' }
-	attr_accessible :name, :description, :tags, :image, :discount, :discount
+	attr_accessible :name, :description, :tags, :image, :discount, :address, :city, :state, :zip, :phone
 	attr_accessor :query
 
 	validates_inclusion_of :state, in: LEGAL_STATE_ARRAY
+	validates_inclusion_of :cycle, in: CYCLES 
+	validates_presence_of :name
+	validates_presence_of :tags
+	validates_presence_of :address
+	validates_presence_of :city
+	validates_presence_of :state
+	validates_presence_of :zip
+	validates_presence_of :phone
+	validates_presence_of :type
+	validates_presence_of :cycle
+
+	def scrub
+		self.phone.gsub(/[^0-9]/, "")
+	end
+
 
 	def safe_image( size = :thumb )
 		the_url = image.url( size )
@@ -37,6 +59,19 @@ class Member
 				words = (words.size > 4) ? words[0..3] : words
 				("<span class='acronym'>#{words.join}</span>").html_safe
 		end
+	end
+
+	def has_all_attributes?
+	  name && description && tags && discount && type && state
+	end
+
+	def price
+		PRICE_MAPPING[type][cycle]
+	end
+
+	def set_and_get_aproval_hash
+		self.aproval_hash = SecureRandom.urlsafe_base64
+		save
 	end
 
 	#Class methods

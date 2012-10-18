@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
 
 	before_filter :require_member, only: [:portal_show, :edit, :update]
-	before_filter :require_admin, only: [:new, :create, :destroy, :admin_index]
+	before_filter :require_admin, only: [:destroy, :admin_index]
 	
 	def index
 		@regular_members = Member.where( type: "Regular" )
@@ -62,13 +62,18 @@ class MembersController < ApplicationController
 	end
 
 	def create
+		type = params[:member][:type]
+		cycle = params[:member][:cycle]
+		params[:member].remove! :cycle, :type
 		@member = Member.new( params[:member] )
-		@member.type = "Regular"
+		@member.type = type
+		@member.cycle = cycle
 		if @member.save
+			current_user.member = @member
 			@member.reload
 			redirect_to members_portal_show_path( @member.id )
 		else
-			render "new"
+			render "new", layout: "portal"
 		end
 	end
 

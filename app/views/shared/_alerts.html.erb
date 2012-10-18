@@ -1,0 +1,33 @@
+<% unless flash[:notice].blank? %>
+  <div class="alert success">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <div class="row">
+		<div class="span8">
+        <%= content_tag :div, flash[:notice] %>
+		</div>
+    </div>
+  </div>
+<% end %>
+
+<% unless flash[:error].blank? %>
+  <div class="alert success">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <div class="row">
+		<div class="span8">
+        <%= content_tag :div, flash[:error] %>
+    </div>
+		</div>
+  </div>
+<% end %>
+
+<% unless flash[:alert].blank? %>
+  <div class="alert success">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <div class="row">
+		<div class="span8">
+        <%= content_tag :div, flash[:alert] %>
+    </div>
+		</div>
+  </div>
+<% end %>
+

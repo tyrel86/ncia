@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+
+	def payment
+		@user = current_user
+		render layout: "account"
+	end
+
+	def activate
+
+	end
 
   def new
     @user = User.new
@@ -11,8 +19,8 @@ class UsersController < ApplicationController
 		@user.admin = false
 		@user.active = false
     if @user.save
-      @user.member = Member.new
-      redirect_to root_url, :notice => "Thank you for signing up! You are ready to log in as soon as you complete the payment."
+			cookies.permanent[:auth_token] = @user.auth_token
+      redirect_to root_url, :notice => "Sorry this form is a little long. Please take your time with it. The information is used to help all members connect and bring each other meaningfull business."
     else
       render :action => 'new', layout: "account"
     end
@@ -21,15 +29,6 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
 		render layout: "account"
-  end
-
-  def update
-    @user = current_user
-    if @user.update_attributes(params[:user])
-      redirect_to root_url, :notice => "Your profile has been updated."
-    else
-      render :action => 'edit', layout: "account"
-    end
   end
 
 end

@@ -1,6 +1,8 @@
 <%= simple_form_for @user do |f| %>
   <%= f.input :username %>
   <%= f.input :email %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
   <%= f.input :password, as: :password %>
   <%= f.input :password_confirmation, as: :password %>
   <%= f.button :submit %>

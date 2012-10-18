@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
           </a>
 					<%= image_tag "logo.png", id: :logo %>
-          <a class="brand" href="#">Member Sign Up!</a>
+          <a class="brand" href="#">Member Sign In!</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
             </ul>
@@ -53,6 +53,7 @@
 
     <div class="container">
 			
+			<%= render "shared/alerts" %>
 			<%= yield %>
 
     </div> <!-- /container -->

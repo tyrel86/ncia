@@ -1,12 +1,44 @@
 <%= tinymce_assets %>
 <%= simple_form_for member, :html => {:multipart => true} do |f| %>
-  <%= f.input :name %>
-	<%= f.input :description, as: :text, :input_html => { class: 'tinymce text-edit' }%>
-  <%= f.input :discount, as: :text, :input_html => { class: 'tinymce text-edit' }%>
+	<h4>Contact Info</h4>
+  <%= f.input :name, label: "Business Name" %>
+	<%= f.input :phone, hint: " Like: 5051234567" %>
+	<%= f.input :address, hint: " Like: 12345 Fake st." %>
+	<%= f.input :city %>
   <%= f.input :state, collection: LEGAL_STATE_ARRAY %>
-  <%= f.input :tags %>
+	<%= f.input :zip, hint: " Like: 80021" %>
+
+	<h4>Personalize your listing page</h4>
+	<p>You can use a service like flicker to host photos to embed. Don't be afraid to style</p>
+	<br />
+	<%= f.input :description, label: "Tell us about your self", as: :text, :input_html => { class: 'tinymce text-edit', name: "member-description" }%> 
+	<br />
+  <%= f.input :discount, label: "What discounts would you like to offer other members?", as: :text, :input_html => { class: 'tinymce text-edit', name: "member-discounts" }%>
+	<br />
+  <%= f.input :tags, hint: " seperate each one with a space", label: "Things you want to show up for when searched that are not in your description or you discounts" %>
+	<br />
+	<p>Upload an image for to be seen in search results and your listing page</p>
 	<%= f.file_field :image %>
+	<br />
+
+	<h4>Select a plan that works for you</h4>	
+	<div class="acount-select">
+	<p>Current Price With Selection: $<span class="price">0</span>.00 recuring: <span class="time">Not Set</span></p>
+  <%= f.input :type, collection: ACCOUNT_TYPES %>
+  <%= f.input :cycle, collection: CYCLES %>
+	</div>
 	<br />
   <%= f.button :submit %>
 <% end %>
+
+<script type="text/javascript">
+		var price_mapper = new Object({
+			<% ACCOUNT_TYPES.each do |type| %>
+				<%= "'" +  type + "'" %>: 
+				{<% CYCLES.each do |time| %>
+					<%= "'" +  time + "'" %>: <%= PRICE_MAPPING[type][time] %>,
+				<% end %>},
+			<% end %>
+		});
+</script>
 <%= tinymce %>

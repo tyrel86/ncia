@@ -33,7 +33,7 @@
 				</li>
 				<li><%= link_to "Campaigns", "/campaigns" %></li>
 				<li><%= link_to "News", articles_path %></li>
-				<li><%= link_to "Join", "#" %></li>
+				<li><%= link_to "Join", join_path %></li>
 			</ul>
 			<h1 class="main-title">The National Voice for the<br />Cannabis Industry</h1>
 			<div class="social-container">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="content-container">
 	<div class="span-6 side-bar-left">
 		<%= link_to( image_tag( @banner.image(:side), class: "banner" ), @banner.url ) %>
 		<%= render "widgets/join" %>
@@ -52,13 +52,13 @@
 	</div>
 
 	<div class="span-12 main-content">
+		<%= render "shared/alerts" %>
 		<%= yield %>
 	</div>
-
 	<div class="span-5 last">
 		<%= render "widgets/members" unless( params[:controller] == "members" and params[:action] == "index" ) %>
 	</div>
-
+	</div>
 	<div class="span-24">
 		<div class="footer-container">
 	</div>
