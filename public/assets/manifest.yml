@@ -12,10 +12,8 @@ newspaper.jpg: newspaper-e0dd302e2bebf264f6d1576a40872843.jpg
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 rss.png: rss-68f8c28864a88eaf6752b6b019a49f3d.png
 twitter.png: twitter-6a6ab78fa881901da02c53f3c47bc1b6.png
-application.js: application-b8d5724aa133fafd7d7b3345f8edaf0b.js
-application.css: application-965c7c1653c8d4f554682ceb6487cf17.css
-bootstrap-min.css: bootstrap-min-ecc505939f7bc3d011504ae9bbc2ecab.css
-bootstrap-responsive-min.css: bootstrap-responsive-min-a1bd3bb8ea4c954203166c25e8e252b4.css
+application.js: application-51344bfe57044c609298feaeb81dd531.js
+application.css: application-7b9f0c787722f159d57fddcf6c08c515.css
 tinymce.js: tinymce-46edacb353bc68aae2a71d984af2982f.js
 tinymce/license.txt: tinymce/license-1ec127777c811211027640b3b24364f2.txt
 tinymce/plugins/advhr/rule.htm: tinymce/plugins/advhr/rule-d4d2d2fa20f4000d3d14f7c6c6dae00b.htm
