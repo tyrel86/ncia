@@ -5,6 +5,7 @@ class User
   attr_accessible :username, :email, :password, :password_confirmation, :first_name, :last_name
 	
 	before_create :generate_token
+  before_save :prepare_password
 
   attr_accessor :password, :password_confirmation
 
@@ -24,19 +25,19 @@ class User
 	field :active,                 :type => Boolean
 
   
-  before_save :prepare_password
   
-  validates_presence_of :username
 	validates_presence_of :email
-  validates_presence_of :first_name
-	validates_presence_of :last_name
-  validates_uniqueness_of :username, :email, :allow_blank => false
 	validates_uniqueness_of :email, :email, :allow_blank => false
   validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   
   # login can be either username or email address
-  def self.authenticate(login, pass)
+	def build_member
+		m = Member.create
+		self.member = m
+	end 	
+
+	def self.authenticate(login, pass)
     user = find_by( :username => login )  || find_by( :email => login )
     return user if user && user.matching_password?(pass)
   end

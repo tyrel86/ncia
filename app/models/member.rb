@@ -23,20 +23,11 @@ class Member
 	attr_accessible :name, :description, :tags, :image, :discount, :address, :city, :state, :zip, :phone
 	attr_accessor :query
 
-	validates_inclusion_of :state, in: LEGAL_STATE_ARRAY
-	validates_inclusion_of :cycle, in: CYCLES 
-	validates_presence_of :name
-	validates_presence_of :tags
-	validates_presence_of :address
-	validates_presence_of :city
-	validates_presence_of :state
-	validates_presence_of :zip
-	validates_presence_of :phone
-	validates_presence_of :type
-	validates_presence_of :cycle
+	validates_inclusion_of :state, allow_nil: true, in: LEGAL_STATE_ARRAY
+	validates_inclusion_of :cycle, allow_nil: true, in: CYCLES 
 
 	def scrub
-		self.phone.gsub(/[^0-9]/, "")
+		self.phone.gsub(/[^0-9]/, "") if phone
 	end
 
 

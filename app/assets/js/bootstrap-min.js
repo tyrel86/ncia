@@ -8,38 +8,10 @@
 /* Custom stuff */
 /* populate account type select price note this is doen again on the backend for security reasons*/
 $(document).ready( function() {
-	var agree = false;
-
-	function getPriceAndDisplay() {
-		/* Initialize */
-		var type = $('#member_type').find("option:selected").val()
-		var time = $('#member_cycle').find("option:selected").val()
-
-		/*Where the magic is*/
-		price = eval( 'price_mapper.' + type + '.' + time )
-		$('.price').html( price )
-		$('.time').html( time )
-	}
-
-	$('#member_type').change( function() {
-		getPriceAndDisplay();
-	})
-	$('#member_cycle').change( function() {
-		getPriceAndDisplay();
-	})
-
 	$("#prepay-submit").submit(function (e) {
-			var just_one = true;
 			if(!$("#agree-var").data('agree')) {
 					e.preventDefault();
 					alert("Please read and agree to to our code of conduct. Thank you.")
-					just_one = false
-			}
-			if(!$("#agree-var").data('seen') && just_one) {
-					e.preventDefault();
-					alert("Please click read the code of conduct. Then read the code of conduct before agreeing to it. Thank you")
-					$("#agree").fadeIn("slow")
-					$("#agree-var").data('agree', false)
 			}
 	});
 
@@ -47,13 +19,9 @@ $(document).ready( function() {
 		$("#agree-var").data('agree', true)
 	}
 
-	$("#see").click( function() {
-		$("#agree-var").data('seen', true)
-	})	
-
 	$("#agree").click( function() {
-		agree_to_terms()
 		$(this).fadeOut("slow")
+		agree_to_terms()
 	})
 
 })

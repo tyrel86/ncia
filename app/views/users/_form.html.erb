@@ -1,9 +1,48 @@
-<%= simple_form_for @user do |f| %>
-  <%= f.input :username %>
-  <%= f.input :email %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :password, as: :password %>
-  <%= f.input :password_confirmation, as: :password %>
-  <%= f.button :submit %>
-<% end %>
+<p>Pleas select a level of membership</p>
+<a href="#member-descriptions" id="see" role="button" class="btn" data-toggle="modal" style="margin-bottom:10px;">Break Down Of Descriptions</a>
+
+<FORM ACTION="https://www.eProcessingNetwork.com/cgi-bin/dbe/order.pl"
+   METHOD=POST id="prepay-submit">
+	<INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="0211625">
+	<select class="select required" id="member_type" name="Total" required="required">
+		<% ACCOUNT_TYPES.each do |at| %>
+			<% CYCLES.each do |c| %>
+				<option value="<%= PRICE_MAPPING[at][c] %>"><%= "#{c} #{at} - $#{PRICE_MAPPING[at][c]}" %></option>
+			<% end %>
+		<% end %>
+	</select>
+	<p>Please fill some contact info and login info</p>
+	<span>Email: </span><input class="required" id="user_email" name="user[email]" required="required"><br />
+	<span>Password: </span><input class="password required" id="user_password" name="user[password]" size="50" type="password"><br />
+	<span>Password Confirmation: </span><input class="password required" id="user_password_confirmation" name="user[password_confirmation]" size="50" type="password"><br />
+	
+<INPUT TYPE="HIDDEN" NAME="ReturnApprovedURL"
+   VALUE="<%= activate_user_url "true" %>">
+<INPUT TYPE="HIDDEN" NAME="ReturnDeclinedURL"
+   VALUE="<%= activate_user_url "false" %>">
+
+
+<h5>I agree to ensure my business follows NCIA's industry Code of Conduct for the duration of my membership.</h5>
+<a href="#terms" id="see" role="button" class="btn" data-toggle="modal" style="margin-bottom:10px;">Read The Code of Conduct</a>
+<a href="#" role="button" class="btn" style="margin-bottom:10px;" id="agree">I Agree</a>
+<div id="agree-var" data-agree="false" data-seen="false"></div>
+<br />
+
+
+<INPUT TYPE="SUBMIT" VALUE="Submit">
+</FORM>
+
+
+
+
+
+
+<div class="modal hide fade" id="terms">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>The National Cannabis Industry Code of Conduct</h4>
+  </div>
+  <div class="modal-body">
+    <p><%= render "shared/agreement" %></p>
+  </div>
+</div>

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require campaigns
 //= require featured-members
+//= require bootstrap-min.js
 
 $(document).ready( function() {
 	$('.cust-drop-down-link').hover( 

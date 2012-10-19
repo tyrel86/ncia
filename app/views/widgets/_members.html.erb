@@ -4,7 +4,7 @@
 	<% @members_banner.each do |m| %>
 		<% member_class = "member-widget" %>
 		<% member_class += " hidden" if count > 5 %>
-		<%= link_to( image_tag( m.image.url(:thumb), class: member_class, "data-index" => count ), m ) %>
+		<%= image_tag m.image.url(:thumb), class: member_class, "data-index" => count %>
 		<% count += 1 %>
 	<% end %>
 	<div class="ncia-btn"><h4 class="member-widget"><%= link_to "MEMBER DIRECTORY", members_path %></h3></div>

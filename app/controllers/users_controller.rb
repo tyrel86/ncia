@@ -6,14 +6,19 @@ class UsersController < ApplicationController
 	end
 
 	def activate
-		@user = User.find(params["ID"])
-		if @user.member.aproval_hash == params[:activation] and @user.member.price == params["Total"].to_i
-			@user.active = true
-			@user.save
-			redirect_to blogs_path, alert: "Thank you for supporting us. Right now the member portal gives you a featured blog. We will be rolling out more user comunity functionality as time passes. Be sure to check out the member benifits and enjoy."
-		else
-			redirect_to root_path, alert: "Something went wrong during the confirmation request. Did you change anything? If not sorry we will look into the issue"
-		end
+		debugger
+		u = User.create( email: params["user"]["email"], password: params["user"]["password"], password_confirmation: params["user"]["password_confirmation"] )
+		u.admin = false
+		u.active = true
+		u.save
+		cookies.permanent[:auth_token] = u.auth_token
+		
+		m = Member.new( name: params["Company"] )
+
+		u.member = m
+		u.save
+
+		redirect_to blogs_path, notice: "Thank you for signing up. This is your member portal. You can update you listing. Offer discounts to other members. Check out what members are offering you. Enjoy our exclusive blog"
 	end
 
   def new

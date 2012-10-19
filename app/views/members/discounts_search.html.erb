@@ -7,8 +7,9 @@
 <hr />
 
 <% unless @members.empty? %>
-	<%= @members.each do |m| %>
+	<% @members.each do |m| %>
 		<%= render "listing", member: m %>
 	<% end %>
+<% else %>
 	<p>Sorry no results match your criteria check back soon we just updated our system and are receiving new discounts every day!</p>
 <% end %>

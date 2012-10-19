@@ -1,4 +1,20 @@
-<h3>Sign Up</h3>
-<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
-
+<h4>membership level breakdown</h4>
+<p>for as little as $100 per month, you will not only enjoy the benefits described below (and more in the future), but you will also increase the power of the industry itself by banding together with your fellow business people and entrepreneurs.</p>
+<p>alone, you are just one business. as part of the national cannabis industry association, you will be part of a recognized economic force in this country. our total is so much greater — and so much more influential — than the sum of our parts.</p>
+<p>please join at one of the three membership levels below so that your voice will be included in the growing chorus of industry leaders that make up ncia.</p>
+<hr />
 <%= render 'form' %>
+
+<hr />
+
+<p>already have an account? <%= link_to "log in", login_path %>.</p>
+
+<div class="modal hide fade" id="member-descriptions">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>the national cannabis industry code of conduct</h4>
+  </div>
+  <div class="modal-body">
+    <p><%= render "shared/member-descriptions" %></p>
+  </div>
+</div>
