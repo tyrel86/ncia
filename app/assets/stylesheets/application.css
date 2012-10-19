@@ -12,7 +12,5 @@
  *= require blue_print/ie
  *= require blue_print/screen
  *= require main
- *= require bootstrap-min
- *= require bootstrap-responsive-min
  *= require admin
  */

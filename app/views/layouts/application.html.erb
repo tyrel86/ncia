@@ -56,7 +56,7 @@
 		<%= yield %>
 	</div>
 	<div class="span-4 last">
-		<%= render "widgets/members" unless( params[:controller] == "members" and params[:action] == "index" ) %>
+		<%= render "widgets/members" unless( params[:controller] == "members" or params[:action] == "index" ) %>
 	</div>
 	</div>
 	<div class="span-24">

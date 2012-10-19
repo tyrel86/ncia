@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 	def payment
 		@user = current_user
-		render layout: "account"
+		render layout: "application"
 	end
 
 	def activate
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-		render layout: "account"
   end
 
   def create

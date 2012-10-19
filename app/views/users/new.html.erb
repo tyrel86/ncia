@@ -1,20 +1,40 @@
 <h4>membership level breakdown</h4>
-<p>for as little as $100 per month, you will not only enjoy the benefits described below (and more in the future), but you will also increase the power of the industry itself by banding together with your fellow business people and entrepreneurs.</p>
-<p>alone, you are just one business. as part of the national cannabis industry association, you will be part of a recognized economic force in this country. our total is so much greater — and so much more influential — than the sum of our parts.</p>
-<p>please join at one of the three membership levels below so that your voice will be included in the growing chorus of industry leaders that make up ncia.</p>
+<p>For as little as $100 per month, you will not only enjoy the benefits described below (and more in the future), but you will also increase the power of the industry itself by banding together with your fellow business people and entrepreneurs.</p>
+<p>Alone, you are just one business. as part of the national cannabis industry association, you will be part of a recognized economic force in this country. our total is so much greater — and so much more influential — than the sum of our parts.</p>
+<p>Please join at one of the three membership levels below so that your voice will be included in the growing chorus of industry leaders that make up ncia.</p>
 <hr />
+
+<%= render "shared/member-descriptions" %>
+
+<hr />
+
 <%= render 'form' %>
+
+<hr />
+
+<h4>Pay membership dues by check or money order</h4>
+
+<p>To join by mail, please print and complete our membership application (PDF) and mail it along with your check in the amount for your desired membership level to:</p>
+
+<p>National Cannabis Industry Association</p>
+<p>P.O. Box 78062</p>
+<p>Washington, DC 20013</p>
+
+<h4>The benefits of joining the National Cannabis Industry Association</h4>
+
+<p>Joining NCIA means being represented alongside other top businesses committed to building a strong and prosperous future for cannabis-based enterprises. With your help, we will be able to ensure that the cannabis industry’s concerns are always heard in Washington D.C.’s halls of power.</p>
+
+<p>Membership also provides a national platform to promote your business and several valuable discounts from participating cannabis industry partners.</p>
+
+<p>Table of membership benefits</p>
+
+<h4>Who Can Join?</h4>
+
+<p>NCIA represents medical cannabis patient centers and dispensaries, specialized grow equipment manufacturers and retailers, smoking or vaporizing equipment manufacturers and retailers, medical cannabis testing facilities, marijuana-related publications and websites, medical cannabis trade schools, medicinal edibles providers, medical cannabis cultivators, cannabis seed providers, medical cannabis insurance providers, financial services companies catering to the cannabis industry, legal professionals, medical professionals specializing in therapeutic cannabis, hemp product manufacturers and retailers, cannabis-related local or state industry or trade associations, and more…</p>
+
+<p>The National Cannabis Industry Association is organized as a 501(c)(6) non-profit corporation. Membership dues are not deductible as charitable contributions, but the portion of your dues not used for lobbying activities are deductible as trade or business expenses.</p>
 
 <hr />
 
 <p>already have an account? <%= link_to "log in", login_path %>.</p>
 
-<div class="modal hide fade" id="member-descriptions">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h3>the national cannabis industry code of conduct</h4>
-  </div>
-  <div class="modal-body">
-    <p><%= render "shared/member-descriptions" %></p>
-  </div>
-</div>
