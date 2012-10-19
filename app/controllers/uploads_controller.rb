@@ -14,7 +14,6 @@ class UploadsController < ApplicationController
 
   def create
 		@upload = Upload.create( params[:upload] )
-		debugger
 		if @upload.save
 			redirect_to uploads_admin_index_path
 		else

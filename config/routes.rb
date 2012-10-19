@@ -3,7 +3,7 @@ Ncia::Application.routes.draw do
 	get "/blogs/admin_index" => "blogs#admin_index"
   resources :blogs
 
-	match 'join'   => 'users#new', as: :join
+	match 'join' => 'users#new', as: :join
 	get   'users/payment' => 'users#payment', as: :payment
 	match 'users/activate/:activation' => 'users#activate', as: :activate_user
   match 'logout' => 'sessions#destroy', :as => :logout

@@ -3,19 +3,18 @@ class ApplicationController < ActionController::Base
 	helper :all
 	helper_method :current_user, :logged_in?
 
-	before_filter :get_banner, :get_members_for_banner, :force_finish_signup
-	after_filter 
+	before_filter :get_banner, :get_members_for_banner
 
 	private
 
-	def force_finish_signup
-		return if ( current_user.nil? or current_user.active? )
-		path = current_user.decern_next_step
-		controller = params[:controller]
-		unless User.in_next_step( controller, path )
-			redirect_to path
-		end
-	end
+	# def force_finish_signup
+	# 	return if ( current_user.nil? or current_user.active? )
+	# 	path = current_user.decern_next_step
+	# 	controller = params[:controller]
+	# 	unless User.in_next_step( controller, path )
+	# 		redirect_to path
+	# 	end
+	# end
 
 	def get_banner
 		@banner = Banner.the_current
