@@ -82,15 +82,15 @@ ul.main-menu-drop-down li {
 body {
 	background-image: url('/assets/bkg2.jpg');
 	background-repeat: no-repeat;
-	background-position-x: center;
-	background-position-y: 27px;
+	background-position: center 27px;
+	/* background-attachment:fixed; */
 	background-color: #FDFDD6;
 	background-size: auto 560px;
 }
 
 .header {
 	background-image: url('/assets/banner.png');
-	height: 223px;
+	height: 222px;
 	width: 950px;
 	margin: auto;
 	margin-top: 10px;
@@ -98,6 +98,7 @@ body {
 	-moz-border-radius: 30px 30px 0px 0px; 
 	-webkit-border-radius: 30px 30px 0px 0px; 
 	position: relative;
+	
 }
 
 .header-container {
@@ -367,4 +368,47 @@ img.member-widget {
 
 .hidden {
 	display: none !important;
+}
+
+.green {
+	color: #126537;
+}
+
+.member-level {
+    width: 265px;
+    z-index: 20;
+    padding-top: 0;
+    background-repeat: repeat-x;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    text-align: left;
+    padding-bottom: 10px;
+    border: solid 2px #a67d3d;
+    float: left;
+    margin: 0 8px 10px 25px;
+		background-color: #fefeef;
+		padding-top: 9px;
+		min-height: 220px;
+		padding-left: 5px;
+		padding-right: 5px;
+}
+
+.member-level h4 {
+	color: white;
+	font-weight: bolder;
+	text-align: center;
+}
+
+.bronze {
+	background-image: url(/images/bronze.jpg);
+	border-color: #A67D3D;
+}
+.silver {
+	background-image: url(/images/silver.jpg);
+	border-color: #A9ACB6;
+}
+.gold {
+	background-image: url(/images/gold.jpg);
+	border-color: #D4A017;
 }

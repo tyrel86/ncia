@@ -6,7 +6,7 @@
 	<select class="select required" id="member_type" name="Total" required="required">
 		<% ACCOUNT_TYPES.each do |at| %>
 			<% CYCLES.each do |c| %>
-				<option value="<%= PRICE_MAPPING[at][c] %>"><%= "#{c} #{at} - $#{PRICE_MAPPING[at][c]}" %></option>
+				<option value="<%= PRICE_MAPPING[at][c] %>"><%= "#{at} #{c} Membership - $#{PRICE_MAPPING[at][c]}" %></option>
 			<% end %>
 		<% end %>
 	</select>
@@ -22,11 +22,15 @@
 
 
 <h5>I agree to ensure my business follows NCIA's industry Code of Conduct for the duration of my membership.</h5>
-<a href="#terms" id="see" role="button" class="btn" data-toggle="modal" style="margin-bottom:10px;">Read The Code of Conduct</a>
-<a href="#" role="button" class="btn" style="margin-bottom:10px;" id="agree">I Agree</a>
-<div id="agree-var" data-agree="false" data-seen="false"></div>
+<a href="#terms" id="see" role="button" class="btn" data-toggle="modal" style="margin-bottom:10px;">Read The Code of Conduct</a><br />
+I agree <input type="checkbox" name="terms" id="terms-check" value="terms"><br/>
 <br />
 
+
+<INPUT TYPE="HIDDEN" NAME="BackgroundColor"
+   VALUE=#FFFCDB>
+<INPUT TYPE="HIDDEN" NAME="LogoURL"
+   VALUE="http://thecannabisindustry.org/public/assets/logo.png">
 
 <INPUT TYPE="SUBMIT" VALUE="Submit">
 </FORM>

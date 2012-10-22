@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+		render layout: "join"
   end
 
   def create
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 			cookies.permanent[:auth_token] = @user.auth_token
       redirect_to root_url, :notice => "Sorry this form is a little long. Please take your time with it. The information is used to help all members connect and bring each other meaningfull business."
     else
-      render :action => 'new', layout: "account"
+      render :action => 'new', layout: "join"
     end
   end
 

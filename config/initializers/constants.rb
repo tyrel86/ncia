@@ -3,16 +3,16 @@ LEGAL_STATE_ARRAY = [ 'All', 'Alaska', 'Arizona', 'California', 'Colorado',
                                           'Montana', 'Nevada', 'New Jersey', 'New Mexico', 
                                           'Oregon', 'Rhode Island' ]
 
-CYCLES = ['Monthly','Annually']
+CYCLES = ['Monthly','Annual']
 
 ACCOUNT_TYPES = ['Sustaining', 'Sponsoring', 'Regular Members']
 
 PRICE_MAPPING = {'Sustaining' => { 'Monthly'  => 500,
-																	 'Annually' => 5000 },
+																	 'Annual' => 5000 },
 								 'Sponsoring' => { 'Monthly'  => 250,
-																	 'Annually' => 2500 },
+																	 'Annual' => 2500 },
 						'Regular Members' => { 'Monthly'  => 100,
-																	 'Annually' => 1000 }}
+																	 'Annual' => 1000 }}
 
 STATE_MAPPINGS = { 'Alaska' => 'AK', 'Arizona' => 'AZ', 'California' => 'CA', 'Colorado' => 'CO',
 									 'Connecticut' => 'CT', 'DC' => 'DC', 'Delaware' => 'DE', 'Hawaii' => 'HI',

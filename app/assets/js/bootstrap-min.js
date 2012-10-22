@@ -9,19 +9,10 @@
 /* populate account type select price note this is doen again on the backend for security reasons*/
 $(document).ready( function() {
 	$("#prepay-submit").submit(function (e) {
-			if(!$("#agree-var").data('agree')) {
+			if( $("#terms-check").attr('checked') != "checked" ) {
 					e.preventDefault();
 					alert("Please read and agree to to our code of conduct. Thank you.")
-			}
+			}	
 	});
-
-	function agree_to_terms() {
-		$("#agree-var").data('agree', true)
-	}
-
-	$("#agree").click( function() {
-		$(this).fadeOut("slow")
-		agree_to_terms()
-	})
 
 })

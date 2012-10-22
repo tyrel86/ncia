@@ -44,19 +44,10 @@
 		</div>
 	</div>
 	<div class="content-container">
-	<div class="span-6 first side-bar-left">
-		<%= link_to( image_tag( @banner.image(:side), class: "banner" ), @banner.url ) %>
-		<%= render "widgets/join" %>
-		<%= render "widgets/articles" %>
-		<%= render "widgets/donate" %>
-	</div>
 
-	<div class="span-12 main-content">
+	<div class="span-24 main-content">
 		<%= render "shared/alerts" %>
 		<%= yield %>
-	</div>
-	<div class="span-4 last">
-		<%= render "widgets/members" unless( params[:controller] == "members" or params[:action] == "index" ) %>
 	</div>
 	</div>
 	<div class="span-24">
