@@ -50,3 +50,15 @@ $(document).ready( function() {
 		$(this).parent().fadeOut("slow")
 	})
 })
+
+/* Custom stuff */
+/* populate account type select price note this is doen again on the backend for security reasons*/
+$(document).ready( function() {
+	$("#prepay-submit").submit(function (e) {
+			if( $("#terms-check").attr('checked') != "checked" ) {
+					e.preventDefault();
+					alert("Please read and agree to to our code of conduct. Thank you.")
+			}	
+	});
+
+})
