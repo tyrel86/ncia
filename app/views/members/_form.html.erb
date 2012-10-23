@@ -7,7 +7,7 @@
   <%= f.input :website, label: "Website to link to when some one clicks you", hint: "http://www.somewhere.com" %>
 
  	<% if current_user.admin == true %>
-		<%= f.input :state, collection: ACCOUNT_TYPES  %>
+		<%= f.input :type, collection: ACCOUNT_TYPES  %>
 	<% end %>
 
 	<h4>Personalize your listing page</h4>
