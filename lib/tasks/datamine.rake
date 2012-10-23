@@ -27,7 +27,8 @@ namespace :datamine do
 				link = getMetaValueForKey( listing, 'dbt_text2' )
 				type = getMetaValueForKey( listing, 'dbt_select' )
 				type = "Regular" if type.nil?
-				type += " members"
+				type = nil if type == "Subsidiary"
+				type += " members" unless type.nil?
 				old_member = Member.where( name: name ).first
 				unless old_member.nil?
 					old_member.type = type
