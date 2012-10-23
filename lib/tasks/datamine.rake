@@ -35,7 +35,7 @@ namespace :datamine do
 					else
 						puts "Failed on #{name}"
 						puts old_member.errors.messages
-						puts "#{old_member.type -- old_member.cat}"
+						puts "#{old_member.type -- old_member.category}"
 					end
 				else
 					puts "No record found for #{name}"
