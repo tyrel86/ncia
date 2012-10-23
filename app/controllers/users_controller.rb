@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 	end
 
 	def activate
+		if params[:activation] == "false"
+			redirect_to join_path, notice: "Your payment was not acepted please try again"
+			return true
+		end
 		u = User.create( email: params["user"]["email"], password: params["user"]["password"], password_confirmation: params["user"]["password_confirmation"] )
 		u.admin = false
 		u.active = true
@@ -13,7 +17,8 @@ class UsersController < ApplicationController
 		cookies.permanent[:auth_token] = u.auth_token
 		
 		m = Member.new( name: params["Company"] )
-
+		m.type = PriceHelper.get_type_for_price( params["Total"].to_i )
+		
 		u.member = m
 		u.save
 

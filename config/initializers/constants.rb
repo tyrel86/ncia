@@ -8,12 +8,26 @@ CYCLES = ['Monthly','Annual']
 ACCOUNT_TYPES = ['Sustaining members', 'Sponsoring members', 'Regular members']
 ACCOUNT_TYPES_DISPLAY = ['Sustaining', 'Sponsoring', 'Regular']
 
-PRICE_MAPPING = {'Sustaining' => { 'Monthly'  => 500,
+PRICE_MAPPING = {'Sustaining members' => { 'Monthly'  => 500,
 																	 'Annual' => 5000 },
-								 'Sponsoring' => { 'Monthly'  => 250,
+								 'Sponsoring members' => { 'Monthly'  => 250,
 																	 'Annual' => 2500 },
-						'Regular Members' => { 'Monthly'  => 100,
+						'Regular Members members' => { 'Monthly'  => 100,
 																	 'Annual' => 1000 }}
+
+module PriceHelper
+	def self.get_type_for_price(price)
+		case price
+			when 500, 5000
+				"Sustaining members"
+			when 250, 2500
+				"Sponsoring members"
+			when 100, 1000
+				"Regular members"
+		end
+	end
+end
+
 
 STATE_MAPPINGS = { 'Alaska' => 'AK', 'Arizona' => 'AZ', 'California' => 'CA', 'Colorado' => 'CO',
 									 'Connecticut' => 'CT', 'DC' => 'DC', 'Delaware' => 'DE', 'Hawaii' => 'HI',
