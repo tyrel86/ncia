@@ -12,7 +12,7 @@ PRICE_MAPPING = {'Sustaining members' => { 'Monthly'  => 500,
 																	 'Annual' => 5000 },
 								 'Sponsoring members' => { 'Monthly'  => 250,
 																	 'Annual' => 2500 },
-						'Regular Members members' => { 'Monthly'  => 100,
+						'Regular members' => { 'Monthly'  => 100,
 																	 'Annual' => 1000 }}
 
 module PriceHelper
