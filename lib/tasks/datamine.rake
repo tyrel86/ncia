@@ -25,7 +25,7 @@ namespace :datamine do
 				state = getMetaValueForKey( listing, 'dbt_selectstate' )
 				cat = getMetaValueForKey( listing, 'dbt_selectc' )
 				link = getMetaValueForKey( listing, 'dbt_text2' )
-				type = getMetaValueForKey( listing, 'dbt_select' )
+				type = getMetaValueForKey( listing, 'dbt_select' ) + " members"
 				old_member = Member.where( name: name ).first
 				unless old_member.nil?
 					old_member.type = type
