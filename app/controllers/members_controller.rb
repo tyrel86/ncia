@@ -39,7 +39,7 @@ class MembersController < ApplicationController
 	def discounts
 		members = Member.all.to_a
 		@members = []
-		5.times do
+		10.times do
 			begin
 				member = members.sample
 				members.delete member
