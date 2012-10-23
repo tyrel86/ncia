@@ -53,9 +53,9 @@ class MembersController < ApplicationController
 		search_terms[:state] = params['member']['state'] unless params['member']['state'].empty?
 		search_terms[:category] = params['member']['category'] unless params['member']['category'].empty?
 		members = Member.where( search_terms )
-		@regular_members = members.where( type: "Regular" )
-		@sustaining_members = members.where( type: "Sustaining" )
-		@sponsoring_members = members.where( type: "Sponsoring" )
+		@regular_members = members.where( type: "Regular members" )
+		@sustaining_members = members.where( type: "Sustaining members" )
+		@sponsoring_members = members.where( type: "Sponsoring members" )
 		render "index", layout: "join"
 	end
 
