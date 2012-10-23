@@ -38,14 +38,6 @@ namespace :datamine do
 					end
 				else
 					puts "No record found for #{name}"
-					if Member.create( state: state, category: cat, website: link )
-						old_member.type = type
-						old_member.save
-						puts "Created new record"
-					else
-						puts "could not create do to"
-						puts old_member.errors.message
-					end
 				end
 			end
 	end
