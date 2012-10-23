@@ -11,6 +11,8 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'html_truncator'
 gem 'kaminari'
 gem 'thin'
+gem 'libxml-ruby'
+gem 'feedzirra'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

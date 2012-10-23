@@ -1,12 +1,29 @@
 class MembersController < ApplicationController
 
 	before_filter :require_member, only: [:portal_show, :edit, :update]
+	before_filter :get_state_and_cat_arrays
 	before_filter :require_admin, only: [:destroy, :admin_index]
 	
+	def get_state_and_cat_arrays
+		@states = Member.all.to_a.inject([]) do |r,v|
+			r.push v.state unless r.include? v.state
+			r
+		end
+		@categories = Member.all.to_a.inject([]) do |r,v|
+			r.push v.category unless r.include? v.category
+			r
+		end
+		@states.delete( nil ) unless @states.empty?
+		@categories.delete( nil ) unless @categories.empty?
+		@states.sort!
+		@categories.sort!
+	end
+
 	def index
 		@regular_members = Member.where( type: "Regular" )
 		@sustaining_members = Member.where( type: "Sustaining" )
 		@sponsoring_members = Member.where( type: "Sponsoring" )
+		render layout: "join"
 	end
 
 	def discounts_search
@@ -16,6 +33,7 @@ class MembersController < ApplicationController
 		@members = @members.inject([]) do |r,m|
 			(m.discount.nil? or m.discount.empty?) ? r : r.push(m)
 		end
+		render layout: "join"
 	end
 
 	def discounts
@@ -31,11 +49,14 @@ class MembersController < ApplicationController
 	end
 
 	def search_index
-		members = Member.where( state: params[:member][:state] )
+		search_terms = {}
+		search_terms[:state] = params['member']['state'] unless params['member']['state'].empty?
+		search_terms[:category] = params['member']['category'] unless params['member']['category'].empty?
+		members = Member.where( search_terms )
 		@regular_members = members.where( type: "Regular" )
 		@sustaining_members = members.where( type: "Sustaining" )
 		@sponsoring_members = members.where( type: "Sponsoring" )
-		render "index"
+		render "index", layout: "join"
 	end
 
 	def admin_index
@@ -87,7 +108,7 @@ class MembersController < ApplicationController
 		if @member.update_attributes( params[:member] )
 			redirect_to members_portal_show_path( @member.id )
 		else
-			render "edit"
+			render "edit", layout: "portal"
 		end
 	end
 

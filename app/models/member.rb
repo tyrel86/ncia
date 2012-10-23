@@ -8,23 +8,22 @@ class Member
 
   field :name, type: String
   field :description, type: String
-  field :tags, type: String
 	field :discount, type: String
 	field :type, type: String
 	field :cycle, type: String
-	field :address, type: String
-	field :city, type: String
+	field :category, type: String
 	field :state, type: String
-	field :zip, type: String
 	field :phone, type: String
 	field :aproval_hash, type: String
+	field :website, type: String
 
 	has_mongoid_attached_file :image, :styles => { :thumb => '135x75>', :large => '200X' }
-	attr_accessible :name, :description, :tags, :image, :discount, :address, :city, :state, :zip, :phone
+	attr_accessible :name, :description, :image, :discount, :state, :category, :website
 	attr_accessor :query
 
 	validates_inclusion_of :state, allow_nil: true, in: LEGAL_STATE_ARRAY
 	validates_inclusion_of :cycle, allow_nil: true, in: CYCLES 
+	validates_inclusion_of :category, allow_nil: true, in: CATEGORY
 
 	def scrub
 		self.phone.gsub(/[^0-9]/, "") if phone
@@ -40,16 +39,17 @@ class Member
 		end
 	end
 
-	def acronym
-		words = name.split(' ')
-		case words.size
-			when 1
-				("<span class='one-word'>#{words[0].size > 11 ? words[0][0..10] : words[0] }</span>").html_safe
-			else
-				words = words.inject([]) { |result, word| result.push word[0].upcase }
-				words = (words.size > 4) ? words[0..3] : words
-				("<span class='acronym'>#{words.join}</span>").html_safe
+	def safe_image_large
+		the_url = image.url
+		if File.basename( the_url ) == "missing.png"
+			("<span class='member-image-alt'>#{acronym}</span>").html_safe
+		else
+			("<img src='#{the_url}' alt='logo-for-#{name}' />").html_safe
 		end
+	end
+
+	def acronym
+		name
 	end
 
 	def has_all_attributes?

@@ -1,4 +1,4 @@
-LEGAL_STATE_ARRAY = [ 'All', 'Alaska', 'Arizona', 'California', 'Colorado', 
+LEGAL_STATE_ARRAY = [ 'Any', 'Alaska', 'Arizona', 'California', 'Colorado', 
                                           'Connecticut', 'DC', 'Delaware', 'Hawaii', 'Maine', 'Michigan', 
                                           'Montana', 'Nevada', 'New Jersey', 'New Mexico', 
                                           'Oregon', 'Rhode Island' ]
@@ -19,3 +19,5 @@ STATE_MAPPINGS = { 'Alaska' => 'AK', 'Arizona' => 'AZ', 'California' => 'CA', 'C
 									 'Maine' => 'ME', 'Nevada' => 'NV', 'New Jersey' => 'NJ', 'New Mexico' => 'NM',
 									 'Oregon' => 'OR', 'Rode Island' => 'RI' }
 
+CATEGORY = ['Any','Medical cannabis providers','Cannabis cultivation supply','Analytical labs','Law offices',
+						'Professional services','Software','Hemp products','Cannabis accessories','other']

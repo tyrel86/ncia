@@ -43,7 +43,7 @@ $(document).ready( function() {
 				$(this).parent().toggleClass( "hidden" )
 			})
 		}
-		$(this).html() == "+" ? $(this).html("-") : $(this).html("+") 
+		$(this).html() == "Show All" ? $(this).html("Hide") : $(this).html("Show All") 
 	})
 
 	$('.close').click( function() {

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 	end
 
 	def activate
-		debugger
 		u = User.create( email: params["user"]["email"], password: params["user"]["password"], password_confirmation: params["user"]["password_confirmation"] )
 		u.admin = false
 		u.active = true
@@ -24,23 +23,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
 		render layout: "join"
-  end
-
-  def create
-    @user = User.new(params[:user])
-		@user.admin = false
-		@user.active = false
-    if @user.save
-			cookies.permanent[:auth_token] = @user.auth_token
-      redirect_to root_url, :notice => "Sorry this form is a little long. Please take your time with it. The information is used to help all members connect and bring each other meaningfull business."
-    else
-      render :action => 'new', layout: "join"
-    end
-  end
-
-  def edit
-    @user = current_user
-		render layout: "account"
   end
 
 end

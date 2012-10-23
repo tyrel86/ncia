@@ -1,5 +1,7 @@
 Ncia::Application.routes.draw do
 
+	get "/feed" => "articles#feed", as: :rss_feed, :defaults => { :format => 'rss' }
+
 	get "/blogs/admin_index" => "blogs#admin_index"
   resources :blogs
 

@@ -4,7 +4,7 @@
 
 <% @people.each do |p| %>
 	<div class="bio-container">
-		<h6 class="bio"><%= "#{p.name}, #{p.title}" %></h6>
+		<h4 class="bio"><%= "#{p.name}, #{p.title}" %></h4>
 		<p class="bio">
 			<%= image_tag p.image.url(:thumb), class: "bio" %>
 			<%= raw p.bio %>

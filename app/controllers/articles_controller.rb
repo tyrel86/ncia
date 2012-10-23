@@ -2,6 +2,14 @@ class ArticlesController < ApplicationController
 	
 	before_filter :require_admin, except: [:index, :show]
 
+	def feed
+		@articles = Article.all 
+
+		respond_to do |format|
+			 format.rss { render :layout => false }
+		end
+	end
+
 	def index
 		articles = Article.all.to_a
 		@articles = Kaminari::PaginatableArray.new( articles ).page(params[:page]).per(4)

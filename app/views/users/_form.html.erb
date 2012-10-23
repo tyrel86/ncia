@@ -1,8 +1,9 @@
-<p>Please select a level of membership</p>
 
 <FORM ACTION="https://www.eProcessingNetwork.com/cgi-bin/dbe/order.pl"
    METHOD=POST id="prepay-submit">
-	<INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="0211625">
+	<!-- <INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="0211625"> -->
+	<INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="080880">
+	<p style="font-weight:bold;">Please select a level of membership</p>
 	<select class="select required" id="member_type" name="Total" required="required">
 		<% ACCOUNT_TYPES.each do |at| %>
 			<% CYCLES.each do |c| %>
@@ -10,7 +11,7 @@
 			<% end %>
 		<% end %>
 	</select>
-	<p>Please fill some contact info and login info</p>
+	<p style="font-weight:bold;">Please fill some contact info and login info</p>
 	<span>Email: </span><input class="required" id="user_email" name="user[email]" required="required"><br />
 	<span>Password: </span><input class="password required" id="user_password" name="user[password]" size="50" type="password"><br />
 	<span>Password Confirmation: </span><input class="password required" id="user_password_confirmation" name="user[password_confirmation]" size="50" type="password"><br />

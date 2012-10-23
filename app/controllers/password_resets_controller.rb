@@ -9,9 +9,9 @@ class PasswordResetsController < ApplicationController
 	def execute
 		@user = current_user
 		if @user.update_attributes(params[:user])
-			redirect_to new_banner_path, :notice => "Password has been reset!"
+			redirect_to blogs_path, :notice => "Password has been reset!"
 		else
-			render :edit, layout: "account"
+			render :edit, layout: "portal"
 		end
 	end
 
