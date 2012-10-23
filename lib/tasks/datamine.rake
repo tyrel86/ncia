@@ -27,10 +27,14 @@ namespace :datamine do
 				link = getMetaValueForKey( listing, 'dbt_text2' )
 				type = getMetaValueForKey( listing, 'dbt_select' )
 				old_member = Member.where( name: name ).first
-				if old_member.update_attributes( state: state, category: cat, website: link, type: type ) unless old_member.nil?
-					puts "updated #{listing.name}"
+				unless old_member.nil?
+					if old_member.update_attributes( state: state, category: cat, website: link, type: type )
+						puts "updated #{listing.name}"
+					else
+						puts "Failed on #{listing.name}"
+					end
 				else
-					puts "Failed on #{listing.name}"
+					puts "No record found for #{name}"
 				end
 			end
 	end
