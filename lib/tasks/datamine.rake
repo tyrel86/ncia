@@ -24,8 +24,9 @@ namespace :datamine do
 				state = getMetaValueForKey( listing, 'dbt_selectstate' )
 				type = getMetaValueForKey( listing, 'dbt_selectc' )
 				link = getMetaValueForKey( listing, 'dbt_text2' )
+				link = getMetaValueForKey( listing, 'dbt_select' )
 				old_member = Member.where( name: name ).first
-				old_member.update_attributes( state: state, category: type, website: link ) unless old_member.nil?
+				old_member.update_attributes( state: state, category: type, website: link, type: type2 ) unless old_member.nil?
 				puts "Failed for #{name}: " if old_member.nil?
 
 			end

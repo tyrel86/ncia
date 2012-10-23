@@ -23,6 +23,7 @@ class Member
 
 	validates_inclusion_of :state, allow_nil: true, in: LEGAL_STATE_ARRAY
 	validates_inclusion_of :cycle, allow_nil: true, in: CYCLES 
+	validates_inclusion_of :type, allow_nil: true, in: ACCOUNT_TYPES
 	validates_inclusion_of :category, allow_nil: true, in: CATEGORY
 
 	def scrub

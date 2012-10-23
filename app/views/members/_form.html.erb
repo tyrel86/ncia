@@ -6,6 +6,10 @@
   <%= f.input :category, collection: CATEGORY %>
   <%= f.input :website, label: "Website to link to when some one clicks you", hint: "http://www.somewhere.com" %>
 
+ 	<% if current_user.admin == true %>
+		<%= f.input :state, collection: ACCOUNT_TYPES  %>
+	<% end %>
+
 	<h4>Personalize your listing page</h4>
 	<p>You can use a service like flicker to host photos to embed. Don't be afraid to style</p>
 	<br />

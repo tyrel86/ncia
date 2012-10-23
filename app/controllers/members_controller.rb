@@ -70,11 +70,7 @@ class MembersController < ApplicationController
 
 	def portal_show
 		@member = current_user.member
-		if @member.name.nil?
-			render "edit", layout: "portal", notice: "Your member profile which gives you exposure through member discounts and our directory is not filled out. Its very easy just fill out the form bellow. Thank you."
-		else
-			render layout: "portal"
-		end
+		render layout: "portal"
 	end
 
 	def new
@@ -105,6 +101,8 @@ class MembersController < ApplicationController
 
 	def update
 		@member = Member.find( params[:id] )
+		@member.type = type
+		@member.cycle = cycle
 		if @member.update_attributes( params[:member] )
 			redirect_to members_portal_show_path( @member.id )
 		else

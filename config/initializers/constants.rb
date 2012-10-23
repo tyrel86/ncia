@@ -5,7 +5,8 @@ LEGAL_STATE_ARRAY = [ 'Any', 'Alaska', 'Arizona', 'California', 'Colorado',
 
 CYCLES = ['Monthly','Annual']
 
-ACCOUNT_TYPES = ['Sustaining', 'Sponsoring', 'Regular Members']
+ACCOUNT_TYPES = ['Sustaining', 'Sponsoring', 'Regular']
+ACCOUNT_TYPES_DISPLAY = ['Sustaining', 'Sponsoring', 'Regular']
 
 PRICE_MAPPING = {'Sustaining' => { 'Monthly'  => 500,
 																	 'Annual' => 5000 },

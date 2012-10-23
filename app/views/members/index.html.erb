@@ -13,7 +13,7 @@
 	<% end %>
 	<% index = 1 %>
 </div>
-<div class="member-heading">Featured Sponsoring Member<% if @sponsoring_members.count > 9 %>s<span class="expand-contract">Show All</span><% end %></div>
+<div class="member-heading">Featured Sponsoring Members<% if @sponsoring_members.count > 9 %>s<span class="expand-contract">Show All</span><% end %></div>
 <div class="member-thumb-container">
 	<% @sponsoring_members.each do |m| %>
 		<%= render "thumb", member: m, i: index %>
