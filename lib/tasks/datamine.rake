@@ -26,7 +26,7 @@ namespace :datamine do
 				
 				old_member = Member.where( name: name ).first
 				old_member.update_attributes( state: state, category: type ) unless old_member.nil?
-				puts "Failed for #{old_member.name}: " if old_member.nil?
+				puts "Failed for #{name}: " if old_member.nil?
 
 			end
 	end
