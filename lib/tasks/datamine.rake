@@ -33,8 +33,9 @@ namespace :datamine do
 						old_member.save
 						puts "updated #{listing.name}"
 					else
-						puts "Failed on #{listing.name}"
+						puts "Failed on #{name}"
 						puts old_member.errors.messages
+						puts "#{old_member.type -- old_member.cat}"
 					end
 				else
 					puts "No record found for #{name}"
