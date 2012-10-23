@@ -27,7 +27,6 @@ namespace :datamine do
 				old_member = Member.where( name: name ).first
 				old_member.update_attributes( state: state, category: type )
 
-				end
 
 			end
 	end
