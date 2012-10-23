@@ -22,7 +22,7 @@ namespace :datamine do
 				#Get virtual attributes
 				name = listing.find('title').first.entries.first.content
 				state = getMetaValueForKey( listing, 'dbt_selectstate' )
-				type = getMetaValueForKey( l, 'dbt_selectc' )
+				type = getMetaValueForKey( listing, 'dbt_selectc' )
 				
 				old_member = Member.where( name: name ).first
 				old_member.update_attributes( state: state, category: type )
