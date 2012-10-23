@@ -20,9 +20,9 @@ class MembersController < ApplicationController
 	end
 
 	def index
-		@regular_members = Member.where( type: "Regular" )
-		@sustaining_members = Member.where( type: "Sustaining" )
-		@sponsoring_members = Member.where( type: "Sponsoring" )
+		@regular_members = Member.where( type: "Regular members" )
+		@sustaining_members = Member.where( type: "Sustaining members" )
+		@sponsoring_members = Member.where( type: "Sponsoring members" )
 		render layout: "join"
 	end
 
