@@ -5,7 +5,7 @@ LEGAL_STATE_ARRAY = [ 'Any', 'Alaska', 'Arizona', 'California', 'Colorado',
 
 CYCLES = ['Monthly','Annual']
 
-ACCOUNT_TYPES = ['Sustaining', 'Sponsoring', 'Regular']
+ACCOUNT_TYPES = ['Sustaining members', 'Sponsoring members', 'Regular members']
 ACCOUNT_TYPES_DISPLAY = ['Sustaining', 'Sponsoring', 'Regular']
 
 PRICE_MAPPING = {'Sustaining' => { 'Monthly'  => 500,
@@ -21,4 +21,4 @@ STATE_MAPPINGS = { 'Alaska' => 'AK', 'Arizona' => 'AZ', 'California' => 'CA', 'C
 									 'Oregon' => 'OR', 'Rode Island' => 'RI' }
 
 CATEGORY = ['Any','Medical cannabis providers','Cannabis cultivation supply','Analytical labs','Law offices',
-						'Professional services','Software','Hemp products','Cannabis accessories','other']
+						'Professional services','Software','Hemp products','Cannabis accessories','Other']
