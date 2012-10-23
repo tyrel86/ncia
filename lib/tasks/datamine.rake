@@ -34,6 +34,7 @@ namespace :datamine do
 						puts "updated #{listing.name}"
 					else
 						puts "Failed on #{listing.name}"
+						puts listing.errors.messages
 					end
 				else
 					puts "No record found for #{name}"
