@@ -33,19 +33,27 @@ class MembersController < ApplicationController
 		@members = @members.inject([]) do |r,m|
 			(m.discount.nil? or m.discount.empty?) ? r : r.push(m)
 		end
-		render layout: "join"
+		@members = @members.shuffle
+		@states = Member.all.to_a.inject([]) do |r,v|
+			r.push v.state unless ( r.include? v.state or (v.discount.nil?))
+			r
+		end
+		@states.delete( nil ) unless @states.empty?
+		render "discounts"
 	end
 
 	def discounts
 		members = Member.all.to_a
 		@members = []
-		10.times do
-			begin
-				member = members.sample
-				members.delete member
-			end while member.discount.nil? or member.discount.empty?
-			@members.push member
+		members.each do |member|
+			@members.push member if member.discount
 		end
+		@members = @members.shuffle
+		@states = Member.all.to_a.inject([]) do |r,v|
+			r.push v.state unless ( r.include? v.state or (v.discount.nil?))
+			r
+		end
+		@states.delete( nil ) unless @states.empty?
 	end
 
 	def search_index
@@ -80,11 +88,9 @@ class MembersController < ApplicationController
 
 	def create
 		type = params[:member][:type]
-		cycle = params[:member][:cycle]
-		params[:member].remove! :cycle, :type
+		params[:member].remove! :type
 		@member = Member.new( params[:member] )
 		@member.type = type
-		@member.cycle = cycle
 		if @member.save
 			current_user.member = @member
 			@member.reload
@@ -102,6 +108,7 @@ class MembersController < ApplicationController
 	def update
 		@member = Member.find( params[:id] )
 		@member.type = params[:member][:type]
+		@member.discount = params["member-discounts"]
 		params[:member].remove! :type
 		if @member.update_attributes( params[:member] )
 			redirect_to members_portal_show_path( @member.id )

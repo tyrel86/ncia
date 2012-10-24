@@ -1,7 +1,7 @@
 <h3>Search For Discounts</h3>
 <%= simple_form_for Member.new, :url => member_discounts_path do |f| %>
 	<%= f.input_field :query, placeholder: "What are you looking for ex. lawyer" %>
-  <%= f.input_field :state, collection: LEGAL_STATE_ARRAY - ['All'], prompt: "Filter By State" %>
+  <%= f.input_field :state, collection: @states, prompt: "Filter By State" %>
   <%= f.submit 'Search' %>
 <% end %>
 <hr />
