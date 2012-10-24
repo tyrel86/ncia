@@ -44,9 +44,8 @@ class MembersController < ApplicationController
 
 	def discounts
 		members = Member.all.to_a
-		@members = []
-		members.each do |member|
-			@members.push member if member.discount
+		@members = members.inject([]) do |member|
+			(m.discount.nil? or m.discount.empty?) ? r : r.push(m)
 		end
 		@members = @members.shuffle
 		@states = Member.all.to_a.inject([]) do |r,v|
