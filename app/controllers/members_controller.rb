@@ -35,7 +35,7 @@ class MembersController < ApplicationController
 		end
 		@members = @members.shuffle
 		@states = Member.all.to_a.inject([]) do |r,v|
-			r.push v.state unless ( r.include? v.state or (v.discount.nil?))
+			r.push v.state unless ( r.include? v.state or (v.discount.nil? or v.discount.empty?))
 			r
 		end
 		@states.delete( nil ) unless @states.empty?
@@ -50,7 +50,7 @@ class MembersController < ApplicationController
 		end
 		@members = @members.shuffle
 		@states = Member.all.to_a.inject([]) do |r,v|
-			r.push v.state unless ( r.include? v.state or (v.discount.nil?))
+			r.push v.state unless ( r.include? v.state or (v.discount.nil? or v.discount.empty?))
 			r
 		end
 		@states.delete( nil ) unless @states.empty?
