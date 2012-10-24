@@ -101,8 +101,8 @@ class MembersController < ApplicationController
 
 	def update
 		@member = Member.find( params[:id] )
-		@member.type = type
-		@member.cycle = cycle
+		@member.type = params[:member][:type]
+		params[:member].remove! :type
 		if @member.update_attributes( params[:member] )
 			redirect_to members_portal_show_path( @member.id )
 		else
