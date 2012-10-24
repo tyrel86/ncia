@@ -50,6 +50,7 @@ class BlogsController < ApplicationController
 
   def destroy
 		Blog.find( params[:id] ).destroy
+		render "admin_index"
   end
 
 end
