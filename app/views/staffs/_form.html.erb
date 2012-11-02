@@ -4,7 +4,7 @@
   <%= f.input :name %>
   <%= f.input :title %>
 	<%= f.input :bio, as: :text, :input_html => { class: 'tinymce text-edit' } %>
-	<%= f.input :type, :collection => ["staff", "strain"] %>
+	<%= f.input :type, :collection => ["staff", "board"] %>
 	<%= f.file_field :image %>
 	<br />
   <%= f.button :submit %>

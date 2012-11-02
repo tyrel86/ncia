@@ -355,6 +355,7 @@ p.bio {
 div.bio-container {
 	border-bottom: 1px solid black;
 	margin-bottom: 10px;
+	min-height: 233px;
 }
 
 .bio-container p {
