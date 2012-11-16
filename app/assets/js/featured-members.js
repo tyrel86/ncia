@@ -59,6 +59,29 @@ $(document).ready( function() {
 					e.preventDefault();
 					alert("Please read and agree to to our code of conduct. Thank you.")
 			}	
-	});
+	})
+
+	function change_recuring( value ) {
+		$("#recr").attr('value',value)	
+	}
+
+	$('#member_type').change( function() {
+		selected = $('#member_type').find(":selected")
+		$("#desc").attr('value', selected.html())
+
+		switch(selected.html()) {
+			case "Sustaining Monthly Membership - $500":
+				change_recuring( 3 )
+				break;
+			case "Sponsoring Monthly Membership - $250":
+				change_recuring( 2 )
+				break;
+			case "Regular Monthly Membership - $100":
+				change_recuring( 1 )
+				break;
+			default:
+				change_recuring( "Null" )
+		}
+	})
 
 })
