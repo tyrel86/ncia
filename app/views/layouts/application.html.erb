@@ -45,7 +45,7 @@
 	</div>
 	<div class="content-container">
 	<div class="span-6 first side-bar-left">
-		<%= link_to( image_tag( @banner.image(:side), class: "banner" ), @banner.url ) %>
+		<%= link_to( image_tag( @banner.image(:side), class: "banner" ), @banner.url ) unless @banner.nil? %>
 		<%= render "widgets/join" %>
 		<%= render "widgets/articles" %>
 		<%= render "widgets/donate" %>
