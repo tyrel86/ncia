@@ -54,6 +54,7 @@ $(document).ready( function() {
 /* Custom stuff */
 /* populate account type select price note this is doen again on the backend for security reasons*/
 $(document).ready( function() {
+	change_recuring( 3 )
 	$("#prepay-submit").submit(function (e) {
 			if( $("#terms-check").attr('checked') != "checked" ) {
 					e.preventDefault();
