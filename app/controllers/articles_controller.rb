@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		articles = Article.all.to_a
+		articles = Article.all.to_a.reverse
 		@articles = Kaminari::PaginatableArray.new( articles ).page(params[:page]).per(4)
 	end
 
