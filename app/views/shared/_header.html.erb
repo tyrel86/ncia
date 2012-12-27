@@ -1,0 +1,32 @@
+<div class="header">
+	<ul class="main-menu">
+		<li><%= link_to "Home", root_path %></li>
+		<li class="cust-drop-down-link"><%= link_to "About Us", "#" %>
+			<ul class="main-menu-drop-down">
+				<li><%= link_to "Mission and Vision", "/aboutus" %></li>
+				<li><%= link_to "Board", board_index_path %></li>
+				<li><%= link_to "Staff", staff_index_path %></li>
+				<li><%= link_to "Contact", "/contact" %></li>
+			</ul>
+		</li>
+		<!-- <li><%= link_to "Member Directory", members_path %></li> -->
+		<li class="cust-drop-down-link"><%= link_to "Member Benefits", "#" %>
+			<ul class="main-menu-drop-down">
+				<li><%= link_to "Industry Advocacy", "/industryadvocacy" %></li>
+				<!-- <li><%= link_to "Member Discounts", member_discounts_path %></li> -->
+				<li><%= link_to "Events", events_path %></li>
+				<% link = (logged_in? ? members_portal_show_path( current_user ) : login_path) %>
+				<li><%= link_to "Member Portal", link %></li>
+			</ul>
+		</li>
+		<li><%= link_to "Campaigns", "/campaigns" %></li>
+		<li><%= link_to "News", articles_path %></li>
+		<li><%= link_to "Join", join_path %></li>
+	</ul>
+	<h1 class="main-title">The National Voice for the<br />Cannabis Industry</h1>
+	<div class="social-container">
+		<%= link_to( image_tag("facebook.png"), "https://www.facebook.com/TheNCIA" ) %>
+		<%= link_to( image_tag("twitter.png"), "http://twitter.com/NCIAorg" ) %>
+		<%= link_to( image_tag("rss.png"), "https://www.facebook.com/TheNCIA" ) %>
+	</div>
+</div>
