@@ -9,11 +9,11 @@
 				<li><%= link_to "Contact", "/contact" %></li>
 			</ul>
 		</li>
-		<!-- <li><%= link_to "Member Directory", members_path %></li> -->
+		<li><%= link_to "Member Directory", members_path %></li>
 		<li class="cust-drop-down-link"><%= link_to "Member Benefits", "#" %>
 			<ul class="main-menu-drop-down">
 				<li><%= link_to "Industry Advocacy", "/industryadvocacy" %></li>
-				<!-- <li><%= link_to "Member Discounts", member_discounts_path %></li> -->
+				<li><%= link_to "Member Discounts", member_discounts_path %></li>
 				<li><%= link_to "Events", events_path %></li>
 				<% link = (logged_in? ? members_portal_show_path( current_user ) : login_path) %>
 				<li><%= link_to "Member Portal", link %></li>
