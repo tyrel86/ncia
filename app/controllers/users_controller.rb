@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
 		redirect_to blogs_path, notice: "Thank you for joining the National Cannabis Industry Association (NCIA). Your participation will help further our work on behalf of legitimate cannabis businesses.
 
-You will be receiving an e-mail confirmation of your membership shortly. Feel free to contact us at Info@TheCannabisIndustry any time with questions or comments.
+You will be receiving an e-mail confirmation of your membership shortly. Feel free to contact us at Info@TheCannabisIndustry.org any time with questions or comments.
 
 Please save your login and password to access to our member portal which contains information on member discounts, an exclusive blog, and more content which will we be adding in the future."
 	end
