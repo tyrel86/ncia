@@ -66,6 +66,11 @@ $(document).ready( function() {
 		$("#recr").attr('value',value)	
 	}
 
+	function change_price() {
+		price = $("#member_type").find(":selected").html().split("$")[1]
+		$("#cost").attr('value',price)
+	}
+
 	$('#member_type').change( function() {
 		selected = $('#member_type').find(":selected")
 		$("#desc").attr('value', selected.html())
@@ -81,8 +86,9 @@ $(document).ready( function() {
 				change_recuring( 1 )
 				break;
 			default:
-				change_recuring( "Null" )
+				change_recuring( 0 )
 		}
+		change_price();
 	})
 
 })
