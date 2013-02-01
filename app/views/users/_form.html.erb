@@ -1,4 +1,6 @@
-<FORM ACTION="https://www.eProcessingNetwork.com/cgi-bin/wo/order.pl"
+<!-- <FORM ACTION="https://www.eProcessingNetwork.com/cgi-bin/wo/order.pl" -->
+<!--    METHOD=POST id="prepay-submit"> -->
+<FORM ACTION="https://www.eprocessingnetwork.com/cgi-bin/Reflect/transact.pl"
    METHOD=POST id="prepay-submit">
 	<INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="0211625">
 	<% '<!-- <INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="080880"> -->' %>
@@ -20,9 +22,9 @@
 <INPUT TYPE="HIDDEN" NAME="ReturnDeclinedURL"
    VALUE="<%= activate_user_url "false" %>">
 <input type="HIDDEN" name="ItemQty" value="1" />
-<input type="HIDDEN" name="ItemDesc" id="desc" value="" />
-<INPUT TYPE=HIDDEN NAME="ItemCost" VALUE="" id="cost">
-<input type="HIDDEN" name="RecurringMethod" id="recr" VALUE="" />
+<input type="HIDDEN" name="ItemDesc" id="desc" value="Sustaining Monthly Membership - $500" />
+<INPUT TYPE=HIDDEN NAME="ItemCost" VALUE="0" id="cost">
+<input type="HIDDEN" name="RecurringMethod" id="recr" VALUE="3" />
 
 <input type="checkbox" name="terms" id="terms-check" value="terms" style="float:left;margin-right:7px;position:relative;top:7px;">
 <h5>I agree to ensure my business follows NCIA's industry Code of Conduct for the duration of my membership.</h5>

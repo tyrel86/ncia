@@ -66,9 +66,13 @@ $(document).ready( function() {
 		$("#recr").attr('value',value)	
 	}
 
-	function change_price() {
+	function auto_change_price() {
 		price = $("#member_type").find(":selected").html().split("$")[1]
 		$("#cost").attr('value',price)
+	}
+
+	function zero_price() {
+		$("#cost").attr('value',"0")
 	}
 
 	$('#member_type').change( function() {
@@ -78,17 +82,20 @@ $(document).ready( function() {
 		switch(selected.html()) {
 			case "Sustaining Monthly Membership - $500":
 				change_recuring( 3 )
+				zero_price();
 				break;
 			case "Sponsoring Monthly Membership - $250":
 				change_recuring( 2 )
+				zero_price();
 				break;
 			case "Regular Monthly Membership - $100":
 				change_recuring( 1 )
+				zero_price();
 				break;
 			default:
-				change_recuring( 0 )
+				change_recuring( "" )
+				auto_change_price();
 		}
-		change_price();
 	})
 
 })
