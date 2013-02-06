@@ -5,27 +5,22 @@
 	<INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="0211625">
 	<% '<!-- <INPUT TYPE="HIDDEN" NAME="ePNAccount"VALUE="080880"> -->' %>
 	<p style="font-weight:bold;">Please select a level of membership</p>
-	<select class="select required" id="member_type" name="Total" required="required">
+	<select class="select required" id="member_type" name="type_select" required="required">
 		<% ACCOUNT_TYPES.each_with_index do |at, index| %>
 			<% CYCLES.each do |c| %>
 				<option value="<%= PRICE_MAPPING[at][c] %>"><%= "#{ACCOUNT_TYPES_DISPLAY[index]} #{c} Membership - $#{PRICE_MAPPING[at][c]}" %></option>
 			<% end %>
 		<% end %>
 	</select>
-	<p style="font-weight:bold;">Please fill some contact info and login info</p>
-	<span>Email: </span><input class="required" id="user_email" name="user[email]" required="required"><br />
-	<span>Password: </span><input class="password required" id="user_password" name="user[password]" size="50" type="password"><br />
-	<span>Password Confirmation: </span><input class="password required" id="user_password_confirmation" name="user[password_confirmation]" size="50" type="password"><br />
-	
 <INPUT TYPE="HIDDEN" NAME="ReturnApprovedURL"
    VALUE="<%= activate_user_url "true" %>">
 <INPUT TYPE="HIDDEN" NAME="ReturnDeclinedURL"
    VALUE="<%= activate_user_url "false" %>">
 <input type="HIDDEN" name="ItemQty" value="1" />
 <input type="HIDDEN" name="ItemDesc" id="desc" value="Sustaining Monthly Membership - $500" />
-<INPUT TYPE=HIDDEN NAME="ItemCost" VALUE="0" id="cost">
+<INPUT TYPE=HIDDEN NAME="ItemCost" VALUE="500" id="cost">
 <input type="HIDDEN" name="RecurringMethod" id="recr" VALUE="3" />
-
+<br />
 <input type="checkbox" name="terms" id="terms-check" value="terms" style="float:left;margin-right:7px;position:relative;top:7px;">
 <h5>I agree to ensure my business follows NCIA's industry Code of Conduct for the duration of my membership.</h5>
 <a href="#terms" role="button" id="see" role="button" class="btn" data-toggle="modal" style="margin-bottom:10px;">Read The Code of Conduct</a><br />

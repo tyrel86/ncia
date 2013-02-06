@@ -56,7 +56,7 @@ $(document).ready( function() {
 $(document).ready( function() {
 	change_recuring( 3 )
 	$("#prepay-submit").submit(function (e) {
-			if( $("#terms-check").attr('checked') != "checked" ) {
+			if( ($("#terms-check").attr('checked') != "checked") ) {
 					e.preventDefault();
 					alert("Please read and agree to to our code of conduct. Thank you.")
 			}	
@@ -82,15 +82,15 @@ $(document).ready( function() {
 		switch(selected.html()) {
 			case "Sustaining Monthly Membership - $500":
 				change_recuring( 3 )
-				zero_price();
+				auto_change_price();
 				break;
 			case "Sponsoring Monthly Membership - $250":
 				change_recuring( 2 )
-				zero_price();
+				auto_change_price();
 				break;
 			case "Regular Monthly Membership - $100":
 				change_recuring( 1 )
-				zero_price();
+				auto_change_price();
 				break;
 			default:
 				change_recuring( "" )
