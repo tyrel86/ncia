@@ -2,6 +2,10 @@ Ncia::Application.routes.draw do
 
 	get "/feed" => "articles#feed", as: :rss_feed, :defaults => { :format => 'rss' }
 
+	get "/nesymposium" => "pages#nesymposium"
+	get "/nesymposiumagenda" => "pages#nesymposiumagenda"
+	get "/nesymposiumspeakers" => "pages#nesymposiumspeakers"
+
 	get "/blogs/admin_index" => "blogs#admin_index"
   resources :blogs
 
