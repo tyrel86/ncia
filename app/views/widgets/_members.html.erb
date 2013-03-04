@@ -2,6 +2,7 @@
 <% count = 1 %>
 <div class="member-widget">
 	<% @members_banner.each do |m| %>
+		<% next if File.basenamem( image.url ) == "missing.png" %>
 		<% member_class = "member-widget" %>
 		<% member_class += " hidden" if count > 5 %>
 		<%= link_to( image_tag( m.image.url(:thumb), class: member_class, "data-index" => count ), m.website || "#" ) %>

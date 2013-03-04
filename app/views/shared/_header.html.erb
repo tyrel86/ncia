@@ -16,7 +16,7 @@
 				<li><%= link_to "Member Discounts", member_discounts_path %></li>
 				<li><%= link_to "Events", events_path %></li>
 				<% link = (logged_in? ? members_portal_show_path( current_user ) : login_path) %>
-				<li><%= link_to "Member Portal", link %></li>
+				<!-- <li><%= link_to "Member Portal", link %></li> -->
 			</ul>
 		</li>
 		<li><%= link_to "Campaigns", "/campaigns" %></li>
